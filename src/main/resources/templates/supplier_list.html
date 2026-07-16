@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>仕入れ先一覧</title>
+</head>
+<body>
+    <h1>仕入れ先一覧(Spring Boot + Thymeleaf)</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>仕入れ先ID</th>
+                <th>仕入れ先名</th>
+                <th>仕入れ先住所</th>
+                <th>電話番号</th>
+                <th>担当者名</th>
+                <th>メールアドレス</th>
+                <th>登録日</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="s : ${suppliers}">
+                <td th:text="${s.supplierID}">ダミーID</td>
+                <td th:text="${s.supplierName}">ダミー名</td>
+                <td th:text="${s.supplierAddress}">ダミー住所</td>
+                <td th:text="${s.phoneNumber}">ダミー電話番号</td>
+                <td th:text="${s.contactPersonName}">ダミー担当者名</td>
+                <td th:text="${s.mailAddress}">ダミーメールアドレス</td>
+                <td th:text="${s.registrationDate}">ダミー登録日</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
