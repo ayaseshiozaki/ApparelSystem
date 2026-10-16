@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>売上情報検索</title>
+    <link rel="stylesheet" href="../../css/03-17-uriage/09-uriagekensaku.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>売上情報検索</h1>
+
+    <form>
+
+        <div class="form-grid">
+
+            <label>売上ID</label>
+            <input type="text" placeholder="ID表示(修正不可)">
+
+            <label>年代</label>
+            <select>
+                <option>10代</option>
+                <option>20代</option>
+                <option>30代</option>
+                <option>40代</option>
+                <option>50代以上</option>
+            </select>
+
+            <label>明細ID</label>
+            <input type="text" placeholder="テキスト入力">
+
+            <label>性別</label>
+            <div class="radio-group">
+                <label><input type="radio" name="sex"> 男性</label>
+                <label><input type="radio" name="sex"> 女性</label>
+            </div>
+
+            <label>販売日</label>
+            <input type="date">
+
+            <label>数量</label>
+            <input type="number" placeholder="数量">
+
+            <label>商品名</label>
+            <select>
+                <option>アイテムを選択</option>
+            </select>
+
+            <div></div>
+
+            <label>単価</label>
+            <input type="number" placeholder="（例）3000">
+
+            <div></div>
+
+            <label>担当者名</label>
+            <input type="text" placeholder="担当者名表示(修正不可)">
+
+            <div></div>
+
+            <label>支払方法</label>
+
+            <div class="check-group">
+                <label><input type="checkbox"> 現金</label>
+                <label><input type="checkbox"> カード</label>
+                <label><input type="checkbox"> QRコード</label>
+            </div>
+
+        </div>
+
+        <div class="button-area">
+            <button type="submit" class="search-btn" onclick="location.href='13-uriagesyuuseikennsakukekka.html'">検索</button>
+            <button type="button" class="back-btn" onclick="location.href='03-uriagekannri.html'">戻る</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

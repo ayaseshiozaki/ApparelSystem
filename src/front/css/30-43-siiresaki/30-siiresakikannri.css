@@ -1,0 +1,70 @@
+/* 共通 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --main:#F6B8D2;
+    --sub:#FCE4EF;
+    --bg:#FFF7FB;
+    --accent:#E85A9A;
+    --border:#F2C8DA;
+    --text:#7A4C63;
+}
+
+body{
+    background:var(--bg);
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+}
+
+/* コンテナ */
+.container{
+    width:900px;
+    margin:80px auto;
+    text-align:center;
+}
+
+/* メニューグリッド */
+.menu-grid{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+}
+
+/* アイテム */
+.menu-item{
+    width:200px;
+    height:200px;
+    background:white;
+    border:3px solid var(--main);
+    border-radius:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.menu-item:hover{
+    transform:translateY(-5px);
+    background:var(--sub);
+}
+
+/* アイコン */
+.icon{
+    font-size:50px;
+    color:var(--accent);
+    margin-bottom:15px;
+}
+
+/* テキスト */
+.menu-item p{
+    font-size:20px;
+    font-weight:bold;
+    color:var(--text);
+}

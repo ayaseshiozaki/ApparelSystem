@@ -1,0 +1,102 @@
+/* --------------------
+   共通
+-------------------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --main-color:#F6B8D2;
+    --sub-color:#FCE4EF;
+    --bg-color:#FFF7FB;
+    --accent-color:#E85A9A;
+    --border-color:#F2C8DA;
+    --text-color:#7A4C63;
+}
+
+body{
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    background:var(--bg-color);
+    color:var(--text-color);
+}
+
+/* --------------------
+   全体
+-------------------- */
+.container{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:40px;
+}
+
+/* --------------------
+   タイトル
+-------------------- */
+h1{
+    color:var(--accent-color);
+    font-size:34px;
+    margin-bottom:60px;
+}
+
+/* --------------------
+   検索結果枠
+-------------------- */
+.result-box{
+    width:600px;
+    height:300px;
+    background:#fff;
+    border:2px solid var(--border-color);
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    padding:20px;
+    margin-bottom:70px;
+}
+
+.result-box p{
+    margin-top:110px;
+    color:var(--text-color);
+    font-size:18px;
+}
+
+/* --------------------
+   ボタン
+-------------------- */
+.button-area{
+    display:flex;
+    gap:35px;
+}
+
+.button-area button{
+    width:150px;
+    height:55px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-edit{
+    background:var(--main-color);
+    color:var(--text-color);
+}
+
+.btn-delete{
+    background:#f08fb6;
+    color:white;
+}
+
+.btn-back{
+    background:#f9dbe7;
+    color:var(--text-color);
+}
+
+.button-area button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 12px rgba(232,90,154,.25);
+}
