@@ -1,0 +1,106 @@
+/* 共通 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --main:#F6B8D2;
+    --sub:#FCE4EF;
+    --bg:#FFF7FB;
+    --accent:#E85A9A;
+    --border:#F2C8DA;
+    --text:#7A4C63;
+    --danger:#D9534F;
+}
+
+body{
+    background:var(--bg);
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+}
+
+/* コンテナ */
+.container{
+    width:700px;
+    margin:60px auto;
+    text-align:center;
+}
+
+/* タイトル */
+h1{
+    color:var(--accent);
+    font-size:34px;
+    margin-bottom:40px;
+}
+
+/* 削除エリア */
+.delete-area{
+    width:500px;
+    margin:0 auto;
+    background:white;
+    border:2px solid var(--border);
+    border-radius:12px;
+    padding:30px 40px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    text-align:left;
+}
+
+label{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:20px;
+    display:block;
+}
+
+.value{
+    font-size:18px;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+    margin-bottom:10px;
+}
+
+.confirm-text{
+    text-align:center;
+    font-size:20px;
+    margin:30px 0;
+    color:var(--danger);
+    font-weight:bold;
+}
+
+/* ボタンエリア */
+.button-area{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:20px;
+}
+
+/* ボタン */
+button{
+    width:180px;
+    height:55px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn{
+    background:var(--danger);
+    color:white;
+}
+
+.cancel-btn{
+    background:#FCE4EF;
+    color:var(--text);
+}
+
+button:hover{
+    transform:translateY(-3px);
+    background:var(--accent);
+    color:white;
+}

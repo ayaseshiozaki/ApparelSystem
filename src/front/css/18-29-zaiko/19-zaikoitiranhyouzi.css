@@ -1,0 +1,102 @@
+/* 共通 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --main:#F6B8D2;
+    --sub:#FCE4EF;
+    --bg:#FFF7FB;
+    --accent:#E85A9A;
+    --border:#F2C8DA;
+    --text:#7A4C63;
+}
+
+body{
+    background:var(--bg);
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+}
+
+/* コンテナ */
+.container{
+    width:900px;
+    margin:60px auto;
+    text-align:center;
+}
+
+/* タイトル */
+h1{
+    color:var(--accent);
+    font-size:34px;
+    margin-bottom:40px;
+}
+
+/* テーブル */
+.zaiko-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    margin-bottom:50px;
+}
+
+.zaiko-table th{
+    background:var(--main);
+    padding:12px;
+    font-size:16px;
+    color:var(--text);
+}
+
+.zaiko-table td{
+    padding:12px;
+    border-bottom:1px solid var(--border);
+    font-size:16px;
+}
+
+.placeholder{
+    text-align:center;
+    padding:40px;
+    font-size:18px;
+    color:var(--text);
+}
+
+/* ボタンエリア */
+.button-area{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+}
+
+/* ボタン */
+button{
+    width:200px;
+    height:55px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    white-space:nowrap;
+}
+
+.detail-btn{
+    background:#333;
+    color:white;
+}
+
+.back-btn{
+    background:#F9DBE7;
+    color:var(--text);
+}
+
+button:hover{
+    transform:translateY(-3px);
+    background:var(--accent);
+    color:white;
+}

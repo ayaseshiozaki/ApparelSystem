@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  background-color: #fbe6f0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding-bottom: 40px;
+}
+/* タイトル */
+.page-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ec4899;
+  margin-bottom: 10px;
+}
+/* 完了メッセージ */
+.complete-message {
+  font-size: 16px;
+  color: #ec4899;
+  font-weight: bold;
+}
+/* メニューへ戻るボタン */
+.btn-menu {
+  background-color: #f9d0e3;
+  color: #ec4899;
+  border: 1.5px solid #ec4899;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+}

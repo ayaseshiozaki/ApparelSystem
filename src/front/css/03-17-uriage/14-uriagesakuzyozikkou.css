@@ -1,0 +1,89 @@
+/* -------------------- 共通 -------------------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --main:#F6B8D2;
+    --sub:#FCE4EF;
+    --bg:#FFF7FB;
+    --accent:#E85A9A;
+    --border:#F2C8DA;
+    --text:#7A4C63;
+}
+
+body{
+    background:var(--bg);
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+}
+
+/* -------------------- コンテナ -------------------- */
+.container{
+    width:700px;
+    margin:60px auto;
+    text-align:center;
+}
+
+/* -------------------- タイトル -------------------- */
+h1{
+    color:var(--accent);
+    font-size:34px;
+    margin-bottom:60px;
+}
+
+/* -------------------- 内容表示枠 -------------------- */
+.confirm-box{
+    width:600px;
+    height:250px;
+    background:white;
+    border:2px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    margin:0 auto 70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.confirm-box p{
+    font-size:20px;
+    color:var(--text);
+}
+
+/* -------------------- ボタン -------------------- */
+.button-area{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+}
+
+button{
+    width:220px;
+    height:55px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    white-space:nowrap;
+}
+
+.delete-btn{
+    background:#333;
+    color:white;
+}
+
+.back-btn{
+    background:#F9DBE7;
+    color:var(--text);
+}
+
+button:hover{
+    transform:translateY(-3px);
+    background:var(--accent);
+    color:white;
+}

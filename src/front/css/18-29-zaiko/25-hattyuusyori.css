@@ -1,0 +1,109 @@
+/* 共通 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --main:#F6B8D2;
+    --sub:#FCE4EF;
+    --bg:#FFF7FB;
+    --accent:#E85A9A;
+    --border:#F2C8DA;
+    --text:#7A4C63;
+}
+
+body{
+    background:var(--bg);
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+}
+
+/* コンテナ */
+.container{
+    width:1100px;
+    margin:40px auto;
+}
+
+/* タイトル */
+h1{
+    text-align:center;
+    color:var(--accent);
+    font-size:34px;
+    margin-bottom:40px;
+}
+
+/* 発注情報枠 */
+.info-box{
+    background:white;
+    border:2px solid var(--border);
+    border-radius:12px;
+    padding:20px 30px;
+    margin-bottom:40px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    font-size:18px;
+}
+
+/* テーブルタイトル */
+.table-title{
+    color:var(--accent);
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+/* 発注テーブル */
+.order-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.order-table th{
+    background:var(--main);
+    padding:12px;
+    font-size:16px;
+    color:var(--text);
+}
+
+.order-table td{
+    padding:12px;
+    border-bottom:1px solid var(--border);
+    font-size:16px;
+}
+
+/* 合計金額 */
+.total-area{
+    text-align:right;
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* ボタン */
+.button-area{
+    text-align:center;
+    margin-top:40px;
+}
+
+.confirm-btn{
+    width:260px;
+    height:60px;
+    border:none;
+    border-radius:10px;
+    background:#F9DBE7;
+    color:var(--text);
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.confirm-btn:hover{
+    transform:translateY(-3px);
+    background:var(--accent);
+    color:white;
+}

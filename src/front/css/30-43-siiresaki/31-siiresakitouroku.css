@@ -1,0 +1,102 @@
+/* 共通 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --main:#F6B8D2;
+    --sub:#FCE4EF;
+    --bg:#FFF7FB;
+    --accent:#E85A9A;
+    --border:#F2C8DA;
+    --text:#7A4C63;
+}
+
+body{
+    background:var(--bg);
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+}
+
+/* コンテナ */
+.container{
+    width:700px;
+    margin:60px auto;
+    text-align:center;
+}
+
+/* タイトル */
+h1{
+    color:var(--accent);
+    font-size:34px;
+    margin-bottom:50px;
+}
+
+/* フォーム */
+.form-area{
+    width:500px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+    text-align:left;
+}
+
+label{
+    font-size:18px;
+    font-weight:bold;
+    color:var(--text);
+}
+
+input[type=text]{
+    width:100%;
+    height:45px;
+    padding:10px;
+    border:2px solid var(--border);
+    border-radius:8px;
+    background:white;
+    font-size:16px;
+}
+
+input:focus{
+    outline:none;
+    border-color:var(--accent);
+}
+
+/* ボタンエリア */
+.button-area{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:40px;
+}
+
+/* ボタン */
+button{
+    width:180px;
+    height:55px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.register-btn{
+    background:var(--main);
+    color:var(--text);
+}
+
+.cancel-btn{
+    background:#FCE4EF;
+    color:var(--text);
+}
+
+button:hover{
+    transform:translateY(-3px);
+    background:var(--accent);
+    color:white;
+}

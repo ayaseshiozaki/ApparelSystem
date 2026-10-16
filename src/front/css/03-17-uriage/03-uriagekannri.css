@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  background-color: #fbe6f0;
+  min-height: 100vh;
+  padding: 50px;
+}
+ 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 700px;
+}
+ 
+.grid-card {
+  background-color: #f6b8d2;
+  padding: 20px;
+  border-radius: 4px;
+}
+ 
+.white-box {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 35px 20px;
+  border-radius: 2px;
+}
+ 
+.white-box img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+ 
+.white-box p {
+  color: #ec4899;
+  font-weight: bold;
+  font-size: 14px;
+}
