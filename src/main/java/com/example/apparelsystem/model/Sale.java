@@ -1,58 +1,116 @@
 package com.example.apparelsystem.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "sales")
+@Table(name = "sale")
 public class Sale {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "SaleID", length = 8, nullable = false)
+    private String saleID;
 
-    // 商品（アパレルなので Product と紐付け）
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    @Column(name = "LineID", length = 8, nullable = false)
+    private String lineID;
 
-    // 売れた数量
-    private int quantity;
+    @Column(name = "AcceptanceID", length = 8, nullable = false)
+    private String acceptanceID;
 
-    // 単価（Product に price があるなら不要）
-    private int unitPrice;
+    @Column(name = "SaleDateAndTime")
+    private LocalDateTime saleDateAndTime;
 
-    // 合計金額（quantity × unitPrice）
-    private int totalPrice;
+    @Column(name = "Quantity")
+    private Integer quantity;
 
-    // 売上日時
-    private LocalDateTime saleDate;
+    @Column(name = "BuyersAgeGroup", length = 1)
+    private String buyersAgeGroup;
 
-    public Sale() {}
+    @Column(name = "BuyersGender", length = 1)
+    private String buyersGender;
 
-    public Sale(Product product, int quantity, int unitPrice, LocalDateTime saleDate) {
-        this.product = product;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.totalPrice = quantity * unitPrice;
-        this.saleDate = saleDate;
+    @Column(name = "ContactPerson")
+    private Integer contactPerson;
+
+    @Column(name = "PaymentMethod", length = 1)
+    private String paymentMethod;
+
+    public Sale() {
     }
 
-    // getter / setter
-    public Long getId() { return id; }
+    public String getSaleID() {
+        return saleID;
+    }
 
-    public Product getProduct() { return product; }
-    public void setProduct(Product product) { this.product = product; }
+    public void setSaleID(String saleID) {
+        this.saleID = saleID;
+    }
 
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public String getLineID() {
+        return lineID;
+    }
 
-    public int getUnitPrice() { return unitPrice; }
-    public void setUnitPrice(int unitPrice) { this.unitPrice = unitPrice; }
+    public void setLineID(String lineID) {
+        this.lineID = lineID;
+    }
 
-    public int getTotalPrice() { return totalPrice; }
-    public void setTotalPrice(int totalPrice) { this.totalPrice = totalPrice; }
+    public String getAcceptanceID() {
+        return acceptanceID;
+    }
 
-    public LocalDateTime getSaleDate() { return saleDate; }
-    public void setSaleDate(LocalDateTime saleDate) { this.saleDate = saleDate; }
+    public void setAcceptanceID(String acceptanceID) {
+        this.acceptanceID = acceptanceID;
+    }
+
+    public LocalDateTime getSaleDateAndTime() {
+        return saleDateAndTime;
+    }
+
+    public void setSaleDateAndTime(LocalDateTime saleDateAndTime) {
+        this.saleDateAndTime = saleDateAndTime;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getBuyersAgeGroup() {
+        return buyersAgeGroup;
+    }
+
+    public void setBuyersAgeGroup(String buyersAgeGroup) {
+        this.buyersAgeGroup = buyersAgeGroup;
+    }
+
+    public String getBuyersGender() {
+        return buyersGender;
+    }
+
+    public void setBuyersGender(String buyersGender) {
+        this.buyersGender = buyersGender;
+    }
+
+    public Integer getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(Integer contactPerson) {
+        this.contactPerson = contactPerson;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 }
