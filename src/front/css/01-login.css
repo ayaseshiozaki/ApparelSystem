@@ -17,12 +17,14 @@ body {
   width: 480px;
   text-align: center;
 }
- 
+
 .logo-icon {
-  width: 70px;
-  height: 70px;
+  width: 100%;
+  max-width: 350px; /* 好きな最大サイズに調整 */
+  height: auto;
   margin-bottom: 40px;
 }
+
  
 .form-row {
   display: flex;
