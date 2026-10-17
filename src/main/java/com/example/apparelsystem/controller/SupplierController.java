@@ -33,7 +33,7 @@ public class SupplierController {
     @GetMapping("/supplier/register")
     public String shouRegisterForm(Model model){
         model.addAttribute("supplier",new Supplier());
-        return "30-43-shiiresaki/31-shiiresaki_touroku";
+        return "30-43-siiresaki/31-shiiresaki_touroku" ;
     }
 
     @PostMapping("/supplier/confirm")
