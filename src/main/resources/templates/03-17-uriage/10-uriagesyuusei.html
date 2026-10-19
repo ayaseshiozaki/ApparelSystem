@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>売上情報修正</title>
+    <link rel="stylesheet" href="../../static/css/03-17-uriage/10-uriagesyuusei.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>売上情報修正</h1>
+
+    <form>
+
+        <div class="form-grid">
+
+            <label>売上ID</label>
+            <input type="text" placeholder="ID表示（修正不可）" disabled>
+
+            <label>明細ID</label>
+            <input type="text" placeholder="テキスト入力">
+
+            <label>販売日</label>
+            <input type="date">
+
+            <label>商品名</label>
+            <select>
+                <option>アイテムの検索</option>
+            </select>
+
+            <label>数量</label>
+            <input type="number" placeholder="数量">
+
+            <label>単価</label>
+            <input type="number" placeholder="（例）￥3000">
+
+            <label>担当者名</label>
+            <input type="text" placeholder="担当者名表示（修正不可）" disabled>
+
+            <label>支払方法</label>
+            <div class="check-group">
+                <label><input type="checkbox"> 現金</label>
+                <label><input type="checkbox"> カード</label>
+                <label><input type="checkbox"> QRコード</label>
+            </div>
+
+            <label>年代</label>
+            <select>
+                <option>10代</option>
+                <option>20代</option>
+                <option>30代</option>
+                <option>40代</option>
+                <option>50代以上</option>
+            </select>
+
+            <label>性別</label>
+            <div class="radio-group">
+                <label><input type="radio" name="sex"> 男性</label>
+                <label><input type="radio" name="sex"> 女性</label>
+            </div>
+
+        </div>
+
+        <div class="button-area">
+            <button type="submit" class="exec-btn" onclick="location.href='11-uriagesyuuseikakunin.html'">実行</button>
+            <button type="button" class="back-btn" onclick="location.href='09-uriagekensaku.html'">戻る</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
