@@ -44,6 +44,8 @@ public class SupplierController {
 
     @PostMapping("/supplier/complete")
     public String completeRegister(@ModelAttribute Supplier supplier){
-    return "30-43-siiresaki/33-siiresaki_touroku_kanryou";
-        }
+        supplierRepository.save(supplier); // ★DBに登録・保存する処理を追加！
+        return "30-43-siiresaki/33-siiresaki_touroku_kanryou"; // ※ファイル名に合わせて変更
+    }
+
 }

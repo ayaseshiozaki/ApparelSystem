@@ -59,9 +59,7 @@ public class Supplier {
     public String getPhoneNumber() {
         return PhoneNumber;
     }
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
-    }
+    public void setPhoneNumber(String phoneNumber) {this.PhoneNumber = phoneNumber;}
 
     public String getContactPersonName() {
         return contactPersonName;
