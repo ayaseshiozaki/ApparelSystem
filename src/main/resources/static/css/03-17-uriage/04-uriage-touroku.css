@@ -1,0 +1,120 @@
+/* -------------------- 共通 -------------------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+:root{
+  --main:#F6B8D2;
+  --sub:#FCE4EF;
+  --bg:#FFF7FB;
+  --accent:#E85A9A;
+  --border:#F2C8DA;
+  --text:#7A4C63;
+}
+body{
+  background:var(--bg);
+  font-family:"Yu Gothic","Meiryo",sans-serif;
+  color:var(--text);
+}
+/* -------------------- コンテナ -------------------- */
+.page-wrapper{
+  width:900px;
+  margin:80px auto;
+}
+/* -------------------- タイトル -------------------- */
+.page-title{
+  text-align:center;
+  color:var(--accent);
+  font-size:34px;
+  margin-bottom:50px;
+}
+/* -------------------- 左右レイアウト -------------------- */
+.content-area{
+  display:flex;
+  gap:40px;
+}
+/* 左：一覧表示ボックス */
+.list-box{
+  flex:1;
+  min-height:320px;
+  position:relative;
+  background:white;
+  border:2px solid var(--border);
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.list-label{
+  position:absolute;
+  bottom:16px;
+  left:20px;
+  font-size:16px;
+}
+/* 右：操作エリア */
+.controls{
+  width:320px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:40px;
+}
+/* -------------------- ファイル選択 -------------------- */
+.file-row{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:12px;
+}
+.btn-file{
+  width:100%;
+  padding:10px;
+  border:2px solid var(--border);
+  border-radius:8px;
+  background:white;
+  font-size:14px;
+  color:var(--text);
+}
+.btn-file::file-selector-button{
+  margin-right:10px;
+  padding:6px 12px;
+  border:none;
+  border-radius:6px;
+  background:var(--sub);
+  color:var(--text);
+  font-weight:bold;
+  cursor:pointer;
+}
+/* -------------------- ボタン -------------------- */
+.register-row{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+.btn-send,
+.btn-register,
+.btn-back{
+  width:150px;
+  height:55px;
+  border:none;
+  border-radius:10px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn-send,
+.btn-register{
+  background:var(--main);
+  color:var(--text);
+}
+.btn-back{
+  background:#F9DBE7;
+  color:var(--text);
+}
+.btn-send:hover,
+.btn-register:hover,
+.btn-back:hover{
+  transform:translateY(-3px);
+  background:var(--accent);
+  color:white;
+}
