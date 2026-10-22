@@ -29,44 +29,18 @@ body{
   font-size:34px;
   margin-bottom:50px;
 }
-/* -------------------- 左右レイアウト -------------------- */
-.content-area{
-  display:flex;
-  gap:40px;
-}
-/* 左：一覧表示ボックス */
-.list-box{
-  flex:1;
-  min-height:320px;
-  position:relative;
-  background:white;
-  border:2px solid var(--border);
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-.list-label{
-  position:absolute;
-  bottom:16px;
-  left:20px;
-  font-size:16px;
-}
-/* 右：操作エリア */
-.controls{
-  width:320px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  gap:40px;
-}
 /* -------------------- ファイル選択 -------------------- */
 .file-row{
   display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:12px;
+  align-items:center;
+  gap:16px;
+  margin-bottom:30px;
+}
+.file-row label{
+  font-weight:bold;
 }
 .btn-file{
-  width:100%;
+  flex:1;
   padding:10px;
   border:2px solid var(--border);
   border-radius:8px;
@@ -84,16 +58,59 @@ body{
   font-weight:bold;
   cursor:pointer;
 }
+/* -------------------- エラーメッセージ -------------------- */
+.error{
+  margin-bottom:30px;
+  padding:12px 20px;
+  border:2px solid #F2A7A7;
+  border-radius:10px;
+  background:#FFF0F0;
+  color:#C2413F;
+  font-weight:bold;
+  text-align:center;
+}
+/* -------------------- 一覧表示 -------------------- */
+.list-label{
+  font-weight:bold;
+  margin-bottom:10px;
+}
+.list-box{
+  overflow-x:auto;
+  background:white;
+  border:2px solid var(--border);
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.list-table{
+  width:100%;
+  border-collapse:collapse;
+}
+.list-table th,
+.list-table td{
+  padding:10px 6px;
+  font-size:13px;
+  white-space:nowrap;
+}
+.list-table th{
+  background:var(--main);
+}
+.list-table td{
+  border-bottom:1px solid var(--border);
+}
+.list-table .placeholder{
+  padding:40px;
+  text-align:center;
+}
 /* -------------------- ボタン -------------------- */
 .register-row{
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:80px;
+  margin-top:40px;
 }
 .btn-send,
 .btn-register,
 .btn-back{
-  width:150px;
   height:55px;
   border:none;
   border-radius:10px;
@@ -101,6 +118,13 @@ body{
   font-weight:bold;
   cursor:pointer;
   transition:.3s;
+}
+.btn-send{
+  width:150px;
+}
+.btn-register,
+.btn-back{
+  width:220px;
 }
 .btn-send,
 .btn-register{

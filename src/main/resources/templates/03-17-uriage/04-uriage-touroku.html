@@ -1,27 +1,54 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>売上情報登録</title>
-    <link rel="stylesheet" href="../../static/css/03-17-uriage/04-uriage-touroku.css">
+    <link rel="stylesheet" href="../../static/css/03-17-uriage/04-uriage-touroku.css" th:href="@{/css/03-17-uriage/04-uriage-touroku.css}">
 </head>
 <body>
 <div class="page-wrapper">
     <h1 class="page-title">売上情報登録</h1>
-    <div class="content-area">
-        <div class="list-box" onclick="location.href='08-uriagekensakukekka.html'">
-            <span class="list-label">一覧表示</span>
-        </div>
-        <div class="controls">
-            <div class="file-row">
-                <input type="file" class="btn-file">
-                <button class="btn-send">送信</button>
-            </div>
-            <div class="register-row">
-                <button class="btn-register" onclick="location.href='05-uriagetourokukakunin.html'">登録</button>
-                <button class="btn-back" onclick="location.href='03-uriagekannri.html'">戻る</button>
-            </div>
-        </div>
+    <!-- 1.売上情報取得：CSVデータを選択し、入力する -->
+    <form class="file-row" action="#" th:action="@{/sales/upload}" method="post" enctype="multipart/form-data">
+        <label>売上データ（CSV）</label>
+        <input type="file" name="csvFile" accept=".csv" class="btn-file">
+        <button type="submit" class="btn-send">送信</button>
+    </form>
+    <!-- 失敗時の出力：エラーメッセージ -->
+    <p class="error" th:if="${errorMessage}" th:text="${errorMessage}">エラーメッセージ</p>
+    <!-- 一覧表示：売上情報（CSV）と 2.商品情報取得 の結果 -->
+    <p class="list-label">一覧表示</p>
+    <div class="list-box">
+        <table class="list-table">
+            <thead>
+            <tr>
+                <th>売上ID</th>
+                <th>明細ID</th>
+                <th>売上日時</th>
+                <th>数量</th>
+                <th>買った人の<br>年代</th>
+                <th>買った人の<br>性別</th>
+                <th>担当者</th>
+                <th>支払方法</th>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>アイテム<br>区分</th>
+                <th>ジェンダー</th>
+                <th>販売対象<br>年齢</th>
+                <th>仕入れ<br>単価</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="14" class="placeholder">CSVを送信すると、ここに一覧が表示されます</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 3.売上情報登録 -->
+    <div class="register-row">
+        <button class="btn-register" onclick="location.href='05-uriage-touroku-kakunin.html'">登録</button>
+        <button class="btn-back" onclick="location.href='03-uriagekannri.html'">戻る</button>
     </div>
 </div>
 </body>
