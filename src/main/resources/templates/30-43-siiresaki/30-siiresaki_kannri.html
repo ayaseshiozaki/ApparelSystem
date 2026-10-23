@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>情報メニュー</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/30-siiresakikannri.css">
+    <!-- staticフォルダ配下のCSSを読み込む -->
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/30-siiresakikannri.css}">
 </head>
 <body>
 
 <div class="container">
-
     <div class="menu-grid">
 
-        <div class="menu-item" onclick="location.href='31-siiresakitouroku.html'">
-            <div class="icon">⬇</div>
-            <p>情報登録</p>
-        </div>
+        <!-- 登録画面へのリンク -->
+        <a th:href="@{/supplier/register}" style="text-decoration: none; color: inherit;">
+            <div class="menu-item">
+                <div class="icon">⬇</div>
+                <p>情報登録</p>
+            </div>
+        </a>
 
-        <div class="menu-item" onclick="location.href='39-siiresakisakuzyo.html'">
+        <div class="menu-item">
             <div class="icon">🗑</div>
             <p>情報削除</p>
         </div>
 
-        <div class="menu-item" onclick="location.href='34-siiresakisyuusei.html'">
+        <div class="menu-item">
             <div class="icon">🧽</div>
             <p>情報修正</p>
         </div>
 
     </div>
-
 </div>
 
 </body>
