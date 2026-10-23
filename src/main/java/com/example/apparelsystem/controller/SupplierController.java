@@ -27,13 +27,13 @@ public class SupplierController {
 
     @GetMapping("/supplier/menu")
     public String shouMenu(){
-        return "30-43-siiresaki/30-shiiresaki_kanri";
+        return "30-43-siiresaki/30-siiresaki_kannri";
     }
 
     @GetMapping("/supplier/register")
     public String shouRegisterForm(Model model){
         model.addAttribute("supplier",new Supplier());
-        return "30-43-siiresaki/31-shiiresaki_touroku";
+        return "30-43-siiresaki/31-siiresaki_touroku";
     }
 
     @PostMapping("/supplier/confirm")

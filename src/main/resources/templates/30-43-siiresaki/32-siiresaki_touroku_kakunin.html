@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>仕入れ先情報 登録確認</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/32-siiresakitourokukakunin.css">
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/32-siiresakitourokukakunin.css}">
 </head>
 <body>
 
@@ -11,37 +11,47 @@
 
     <h1>仕入れ先情報 登録確認</h1>
 
-    <div class="confirm-area">
+    <!-- 完了処理(/supplier/complete)へ送るフォーム -->
+    <form th:action="@{/supplier/complete}" th:object="${supplier}" method="post">
+        <div class="confirm-area">
 
-        <label>仕入れID</label>
-        <p class="value">仕入れID表示</p>
+            <label>仕入れID</label>
+            <p class="value" th:text="*{supplierID}">仕入れID表示</p>
+            <input type="hidden" th:field="*{supplierID}">
 
-        <label>仕入れ先名</label>
-        <p class="value">仕入れ先名表示</p>
+            <label>仕入れ先名</label>
+            <p class="value" th:text="*{supplierName}">仕入れ先名表示</p>
+            <input type="hidden" th:field="*{supplierName}">
 
-        <label>仕入れ住所</label>
-        <p class="value">仕入れ住所表示</p>
+            <label>仕入れ住所</label>
+            <p class="value" th:text="*{supplierAddress}">仕入れ住所表示</p>
+            <input type="hidden" th:field="*{supplierAddress}">
 
-        <label>電話番号</label>
-        <p class="value">電話番号表示</p>
+            <label>電話番号</label>
+            <p class="value" th:text="*{phoneNumber}">電話番号表示</p>
+            <input type="hidden" th:field="*{phoneNumber}">
 
-        <label>担当者名</label>
-        <p class="value">担当者名表示</p>
+            <label>担当者名</label>
+            <p class="value" th:text="*{contactPersonName}">担当者名表示</p>
+            <input type="hidden" th:field="*{contactPersonName}">
 
-        <label>メールアドレス</label>
-        <p class="value">メールアドレス表示</p>
+            <label>メールアドレス</label>
+            <p class="value" th:text="*{mailAddress}">メールアドレス表示</p>
+            <input type="hidden" th:field="*{mailAddress}">
 
-        <label>登録日</label>
-        <p class="value">2026年5月29日</p>
+            <label>登録日</label>
+            <p class="value" th:text="*{registrationDate}">2026年5月29日</p>
+            <input type="hidden" th:field="*{registrationDate}">
 
-        <p class="question">登録してよろしいですか？</p>
+            <p class="question">登録してよろしいですか？</p>
 
-        <div class="button-area">
-            <button class="register-btn" onclick="location.href='33-siiresakitourokukanryou.html'">登録</button>
-            <button class="back-btn" onclick="location.href='31-siiresakitouroku.html'">戻る</button>
+            <div class="button-area">
+                <button type="submit" class="register-btn">登録</button>
+                <button type="button" class="back-btn" onclick="history.back()">戻る</button>
+            </div>
+
         </div>
-
-    </div>
+    </form>
 
 </div>
 

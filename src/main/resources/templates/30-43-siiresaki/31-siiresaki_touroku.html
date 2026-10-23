@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>仕入れ情報入力</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/31-siiresakitouroku.css">
+    <!-- 入力画面専用のCSSを指定 -->
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/31-siiresakitouroku.css}">
 </head>
 <body>
 
@@ -11,23 +12,33 @@
 
     <h1>仕入れ情報入力</h1>
 
-    <form class="form-area">
+    <!-- 確認画面(/supplier/confirm)へPOST送信する -->
+    <form class="form-area" th:action="@{/supplier/confirm}" th:object="${supplier}" method="post">
 
         <label>仕入れID</label>
-        <input type="text" placeholder="仕入れIDを入力">
+        <input type="text" th:field="*{supplierID}" placeholder="仕入れIDを入力" required>
 
-        <label>仕入れ名前</label>
-        <input type="text" placeholder="仕入れ名前を入力">
+        <label>仕入れ先名</label>
+        <input type="text" th:field="*{supplierName}" placeholder="仕入れ名前を入力">
 
         <label>仕入れ住所</label>
-        <input type="text" placeholder="仕入れ住所を入力">
+        <input type="text" th:field="*{supplierAddress}" placeholder="仕入れ住所を入力">
 
         <label>電話番号</label>
-        <input type="text" placeholder="電話番号を入力">
+        <input type="text" th:field="*{phoneNumber}" placeholder="電話番号を入力">
+
+        <label>担当者名</label>
+        <input type="text" th:field="*{contactPersonName}" placeholder="担当者名を入力">
+
+        <label>メールアドレス</label>
+        <input type="email" th:field="*{mailAddress}" placeholder="メールアドレスを入力">
+
+        <label>登録日</label>
+        <input type="date" th:field="*{registrationDate}">
 
         <div class="button-area">
-            <button class="register-btn" onclick="location.href='32-siiresakitourokukakunin.html'">登録</button>
-            <button class="cancel-btn" onclick="location.href='30-siiresakikannri.html'">キャンセル</button>
+            <button type="submit" class="register-btn">登録</button>
+            <button type="button" class="cancel-btn" th:onclick="|location.href='@{/supplier/menu}'|">キャンセル</button>
         </div>
 
     </form>
