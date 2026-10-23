@@ -12,6 +12,10 @@
     <tr>
         <th>商品ID</th>
         <th>商品名</th>
+        <th>カテゴリ</th>
+        <th>カラー</th>
+        <th>サイズ</th>
+        <th>性別</th>
         <th>仕入先ID</th>
         <th>仕入価格</th>
     </tr>
@@ -19,6 +23,10 @@
     <tr th:each="product : ${products}">
         <td th:text="${product.productID}"></td>
         <td th:text="${product.productName}"></td>
+        <td th:text="${product.itemCategory}"></td>
+        <td th:text="${product.color}"></td>
+        <td th:text="${product.size}"></td>
+        <td th:text="${product.gender}"></td>
         <td th:text="${product.supplierID}"></td>
         <td th:text="${product.purchasePrice}"></td>
     </tr>
