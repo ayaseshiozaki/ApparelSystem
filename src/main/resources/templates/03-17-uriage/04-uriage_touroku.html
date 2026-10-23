@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>売上情報登録</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/03-17-uriage/04-uriage-touroku.css}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <h1 class="page-title">
+        売上情報登録
+    </h1>
+
+    <!-- CSV選択 -->
+    <form class="file-row"
+          th:action="@{/sales/confirm}"
+          method="post"
+          enctype="multipart/form-data">
+
+        <label for="csvFile">
+            売上データ（CSV）
+        </label>
+
+        <input
+                id="csvFile"
+                type="file"
+                name="csvFile"
+                accept=".csv"
+                class="btn-file"
+                required>
+
+        <button
+                type="submit"
+                class="btn-send">
+            送信
+        </button>
+
+    </form>
+
+    <!-- エラーメッセージ -->
+    <p class="error"
+       th:if="${errorMessage}"
+       th:text="${errorMessage}">
+    </p>
+
+    <!-- CSV内容プレビュー -->
+    <p class="list-label">
+        一覧表示
+    </p>
+
+    <div class="list-box">
+
+        <table class="list-table">
+
+            <thead>
+
+            <tr>
+                <th>売上ID</th>
+                <th>明細ID</th>
+                <th>売上日時</th>
+                <th>数量</th>
+                <th>買った人の年代</th>
+                <th>買った人の性別</th>
+                <th>担当者</th>
+                <th>支払方法</th>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>アイテム区分</th>
+                <th>ジェンダー</th>
+                <th>販売対象年齢</th>
+                <th>仕入単価</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr>
+                <td colspan="14"
+                    class="placeholder">
+
+                    CSVを送信すると、
+                    ここに確認データが表示されます
+
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="register-row">
+
+        <button
+                type="button"
+                class="btn-back"
+                onclick="location.href='03-uriagekannri.html'">
+
+            戻る
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+</html>
