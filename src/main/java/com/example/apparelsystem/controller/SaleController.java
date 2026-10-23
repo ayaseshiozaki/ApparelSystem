@@ -23,10 +23,14 @@ public class SaleController {
 
     // 売上登録画面を表示
     @GetMapping("/new")
-    public String showSaleForm() {
-        return "redirect:/front/public/03-17-uriage/04-uriagetouroku.html";
-    }
-    // 売上データを登録
+    public String showSaleForm(Model model) {
+
+        model.addAttribute(
+                "sales",
+                saleRepository.findAll());
+
+        return "03-17-uriage/04-uriage_touroku";
+    }    // 売上データを登録
     @PostMapping("/register")
     public String registerSale(
             @ModelAttribute Sale sale,
@@ -90,6 +94,6 @@ public class SaleController {
                 "sales",
                 saleRepository.findAll());
 
-        return "03-17-uriage/04-uriagetouroku";
+        return "03-17-uriage/04-uriage_touroku";
     }
 }

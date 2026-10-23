@@ -67,11 +67,6 @@
                 <th>購入者性別</th>
                 <th>担当者</th>
                 <th>支払方法</th>
-                <th>商品ID</th>
-                <th>商品名</th>
-                <th>アイテム区分</th>
-                <th>ジェンダー</th>
-                <th>販売対象年齢</th>
             </tr>
             </thead>
 
@@ -79,7 +74,7 @@
 
             <!-- データがない場合 -->
             <tr th:if="${#lists.isEmpty(sales)}">
-                <td colspan="14" class="placeholder">
+                <td colspan="9" class="placeholder">
                     売上データがありません
                 </td>
             </tr>
@@ -95,13 +90,6 @@
                 <td th:text="${sale.buyersGender}"></td>
                 <td th:text="${sale.contactPerson}"></td>
                 <td th:text="${sale.paymentMethod}"></td>
-
-                <!-- 商品テーブル連携前なので仮表示 -->
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
             </tr>
 
             </tbody>

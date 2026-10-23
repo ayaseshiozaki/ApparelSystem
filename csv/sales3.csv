@@ -1,0 +1,3 @@
+SaleID,LineID,AcceptanceID,SaleDateAndTime,Quantity,BuyersAgeGroup,BuyersGender,ContactPerson,PaymentMethod
+S0000006,L0000006,A0000001,2026-10-25T10:00:00,2,2,1,1,1
+S0000007,L0000007,A0000002,2026-10-25T11:00:00,3,3,2,2,2
