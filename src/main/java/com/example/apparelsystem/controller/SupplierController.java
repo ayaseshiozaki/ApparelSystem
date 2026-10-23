@@ -25,6 +25,7 @@ public class SupplierController {
         return "supplier_list";
     }
 
+
     @GetMapping("/supplier/menu")
     public String shouMenu(){
         return "30-43-siiresaki/30-siiresaki_kannri";
