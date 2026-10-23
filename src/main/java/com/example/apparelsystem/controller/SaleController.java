@@ -83,3 +83,4 @@ public class SaleController {
         return "redirect:/sales/new";
     }
 }
+
