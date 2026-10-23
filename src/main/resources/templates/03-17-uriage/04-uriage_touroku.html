@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>売上情報登録</title>
@@ -16,9 +17,9 @@
         売上情報登録
     </h1>
 
-    <!-- CSV選択 -->
+    <!-- CSVアップロード -->
     <form class="file-row"
-          th:action="@{/sales/confirm}"
+          th:action="@{/sales/upload}"
           method="post"
           enctype="multipart/form-data">
 
@@ -26,16 +27,14 @@
             売上データ（CSV）
         </label>
 
-        <input
-                id="csvFile"
-                type="file"
-                name="csvFile"
-                accept=".csv"
-                class="btn-file"
-                required>
+        <input id="csvFile"
+               type="file"
+               name="csvFile"
+               accept=".csv"
+               class="btn-file"
+               required>
 
-        <button
-                type="submit"
+        <button type="submit"
                 class="btn-send">
             送信
         </button>
@@ -48,7 +47,7 @@
        th:text="${errorMessage}">
     </p>
 
-    <!-- CSV内容プレビュー -->
+    <!-- 一覧表示 -->
     <p class="list-label">
         一覧表示
     </p>
@@ -58,14 +57,14 @@
         <table class="list-table">
 
             <thead>
-
             <tr>
                 <th>売上ID</th>
                 <th>明細ID</th>
+                <th>受付ID</th>
                 <th>売上日時</th>
                 <th>数量</th>
-                <th>買った人の年代</th>
-                <th>買った人の性別</th>
+                <th>購入者年代</th>
+                <th>購入者性別</th>
                 <th>担当者</th>
                 <th>支払方法</th>
                 <th>商品ID</th>
@@ -73,21 +72,36 @@
                 <th>アイテム区分</th>
                 <th>ジェンダー</th>
                 <th>販売対象年齢</th>
-                <th>仕入単価</th>
             </tr>
-
             </thead>
 
             <tbody>
 
-            <tr>
-                <td colspan="14"
-                    class="placeholder">
-
-                    CSVを送信すると、
-                    ここに確認データが表示されます
-
+            <!-- データがない場合 -->
+            <tr th:if="${#lists.isEmpty(sales)}">
+                <td colspan="14" class="placeholder">
+                    売上データがありません
                 </td>
+            </tr>
+
+            <!-- DBに登録された売上表示 -->
+            <tr th:each="sale : ${sales}">
+                <td th:text="${sale.saleID}"></td>
+                <td th:text="${sale.lineID}"></td>
+                <td th:text="${sale.acceptanceID}"></td>
+                <td th:text="${sale.saleDateAndTime}"></td>
+                <td th:text="${sale.quantity}"></td>
+                <td th:text="${sale.buyersAgeGroup}"></td>
+                <td th:text="${sale.buyersGender}"></td>
+                <td th:text="${sale.contactPerson}"></td>
+                <td th:text="${sale.paymentMethod}"></td>
+
+                <!-- 商品テーブル連携前なので仮表示 -->
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
             </tr>
 
             </tbody>
@@ -98,13 +112,10 @@
 
     <div class="register-row">
 
-        <button
-                type="button"
+        <button type="button"
                 class="btn-back"
-                onclick="location.href='03-uriagekannri.html'">
-
+                onclick="location.href='/uriage'">
             戻る
-
         </button>
 
     </div>
