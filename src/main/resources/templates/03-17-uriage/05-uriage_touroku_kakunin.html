@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>売上情報登録確認</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/03-17-uriage/05-uriage-touroku-kakunin.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>登録確認</h1>
+
+    <!-- CSV読込時のエラー表示 -->
+    <p class="error-message"
+       th:if="${errorMessage}"
+       th:text="${errorMessage}">
+        エラーメッセージ
+    </p>
+
+    <!-- CSVファイル名 -->
+    <p class="file-name"
+       th:if="${csvFileName}">
+        選択したファイル：
+        <span th:text="${csvFileName}">
+            sales.csv
+        </span>
+    </p>
+
+    <div class="confirm-box">
+
+        <table class="list-table">
+
+            <thead>
+            <tr>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>売上日時</th>
+                <th>数量</th>
+                <th>販売単価</th>
+                <th>合計金額</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <!-- Controllerから受け取ったCSVデータを表示 -->
+            <tr th:each="sale : ${confirmSales}">
+
+                <td th:text="${sale.product.productID}">
+                    P001
+                </td>
+
+                <td th:text="${sale.product.productName}">
+                    商品名
+                </td>
+
+                <td th:text="${#temporals.format(
+                        sale.saleDate,
+                        'yyyy/MM/dd HH:mm:ss'
+                    )}">
+                    2026/10/23 10:30:00
+                </td>
+
+                <td th:text="${sale.quantity}">
+                    1
+                </td>
+
+                <td th:text="${sale.unitPrice}">
+                    1000
+                </td>
+
+                <td th:text="${sale.totalPrice}">
+                    1000
+                </td>
+
+            </tr>
+
+            <!-- データがない場合 -->
+            <tr th:if="${confirmSales == null
+                        or #lists.isEmpty(confirmSales)}">
+
+                <td colspan="6"
+                    class="placeholder">
+
+                    登録する売上データがありません
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+            <!-- 合計表示 -->
+            <tfoot th:if="${confirmSales != null
+                           and !#lists.isEmpty(confirmSales)}">
+
+            <tr>
+                <th colspan="5">
+                    登録予定件数
+                </th>
+
+                <td th:text="${#lists.size(confirmSales) + '件'}">
+                    0件
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="5">
+                    売上金額合計
+                </th>
+
+                <td th:text="${confirmTotalPrice + '円'}">
+                    0円
+                </td>
+            </tr>
+
+            </tfoot>
+
+        </table>
+
+    </div>
+
+    <p class="question"
+       th:if="${confirmSales != null
+               and !#lists.isEmpty(confirmSales)}">
+
+        この内容で登録しますか？
+
+    </p>
+
+    <div class="button-area">
+
+        <!-- 確認済みCSVデータをDBへ登録 -->
+        <form th:action="@{/sales/register-csv}"
+              method="post"
+              th:if="${confirmSales != null
+                      and !#lists.isEmpty(confirmSales)}">
+
+            <button type="submit"
+                    class="btn-register">
+
+                登録実行
+
+            </button>
+
+        </form>
+
+        <!-- CSV選択画面へ戻る -->
+        <form th:action="@{/sales/new}"
+              method="get">
+
+            <button type="submit"
+                    class="btn-back">
+
+                情報登録へ戻る
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
