@@ -4,6 +4,7 @@ import com.example.apparelsystem.model.Sale;
 import com.example.apparelsystem.repository.SaleRepository;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -81,5 +82,14 @@ public class SaleController {
                 "message", "売上を登録しました。");
 
         return "redirect:/sales/new";
+    }
+    @GetMapping("/list")
+    public String listSales(Model model) {
+
+        model.addAttribute(
+                "sales",
+                saleRepository.findAll());
+
+        return "03-17-uriage/04-uriagetouroku";
     }
 }
