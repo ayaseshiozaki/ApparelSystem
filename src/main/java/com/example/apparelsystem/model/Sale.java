@@ -1,9 +1,9 @@
 package com.example.apparelsystem.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Column;
 
 import java.time.LocalDateTime;
 
@@ -11,35 +11,105 @@ import java.time.LocalDateTime;
 @Table(name = "sale")
 public class Sale {
 
+    // 売上ID：主キー、8文字以内
     @Id
-    @Column(name = "SaleID", length = 8, nullable = false)
+    @Column(
+            name = "SaleID",
+            length = 8,
+            nullable = false
+    )
     private String saleID;
 
-    @Column(name = "LineID", length = 8, nullable = false)
+    // 明細ID：8文字以内
+    @Column(
+            name = "LineID",
+            length = 8,
+            nullable = false
+    )
     private String lineID;
 
-    @Column(name = "AcceptanceID", length = 8, nullable = false)
+    // 受付ID：8文字以内
+    @Column(
+            name = "AcceptanceID",
+            length = 8,
+            nullable = false
+    )
     private String acceptanceID;
 
-    @Column(name = "SaleDateAndTime")
+    // 売上日時
+    @Column(
+            name = "SaleDateAndTime",
+            nullable = false
+    )
     private LocalDateTime saleDateAndTime;
 
-    @Column(name = "Quantity")
+    // 販売数量
+    @Column(
+            name = "Quantity",
+            nullable = false
+    )
     private Integer quantity;
 
-    @Column(name = "BuyersAgeGroup", length = 1)
+    // 購入者の年代区分
+    @Column(
+            name = "BuyersAgeGroup",
+            length = 1,
+            nullable = false
+    )
     private String buyersAgeGroup;
 
-    @Column(name = "BuyersGender", length = 1)
+    // 購入者の性別区分
+    @Column(
+            name = "BuyersGender",
+            length = 1,
+            nullable = false
+    )
     private String buyersGender;
 
-    @Column(name = "ContactPerson")
+    // 担当者番号
+    @Column(
+            name = "ContactPerson",
+            nullable = false
+    )
     private Integer contactPerson;
 
-    @Column(name = "PaymentMethod", length = 1)
+    // 支払方法区分
+    @Column(
+            name = "PaymentMethod",
+            length = 1,
+            nullable = false
+    )
     private String paymentMethod;
 
+    /*
+     * JPAで必要な引数なしコンストラクタ
+     */
     public Sale() {
+    }
+
+    /*
+     * CSVからSaleを作成するときに使用するコンストラクタ
+     */
+    public Sale(
+            String saleID,
+            String lineID,
+            String acceptanceID,
+            LocalDateTime saleDateAndTime,
+            Integer quantity,
+            String buyersAgeGroup,
+            String buyersGender,
+            Integer contactPerson,
+            String paymentMethod
+    ) {
+        this.saleID = saleID;
+        this.lineID = lineID;
+        this.acceptanceID = acceptanceID;
+        this.saleDateAndTime = saleDateAndTime;
+        this.quantity = quantity;
+        this.buyersAgeGroup = buyersAgeGroup;
+        this.buyersGender = buyersGender;
+        this.contactPerson = contactPerson;
+        this.paymentMethod = paymentMethod;
     }
 
     public String getSaleID() {
@@ -70,7 +140,9 @@ public class Sale {
         return saleDateAndTime;
     }
 
-    public void setSaleDateAndTime(LocalDateTime saleDateAndTime) {
+    public void setSaleDateAndTime(
+            LocalDateTime saleDateAndTime
+    ) {
         this.saleDateAndTime = saleDateAndTime;
     }
 
@@ -86,7 +158,9 @@ public class Sale {
         return buyersAgeGroup;
     }
 
-    public void setBuyersAgeGroup(String buyersAgeGroup) {
+    public void setBuyersAgeGroup(
+            String buyersAgeGroup
+    ) {
         this.buyersAgeGroup = buyersAgeGroup;
     }
 
@@ -94,7 +168,9 @@ public class Sale {
         return buyersGender;
     }
 
-    public void setBuyersGender(String buyersGender) {
+    public void setBuyersGender(
+            String buyersGender
+    ) {
         this.buyersGender = buyersGender;
     }
 
@@ -102,7 +178,9 @@ public class Sale {
         return contactPerson;
     }
 
-    public void setContactPerson(Integer contactPerson) {
+    public void setContactPerson(
+            Integer contactPerson
+    ) {
         this.contactPerson = contactPerson;
     }
 
@@ -110,7 +188,9 @@ public class Sale {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(
+            String paymentMethod
+    ) {
         this.paymentMethod = paymentMethod;
     }
 }

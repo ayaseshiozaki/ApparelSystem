@@ -131,27 +131,30 @@ public class SaleController {
 
     /**
      * 売上検索
+     * キーワード未入力の場合は検索画面へ戻す
      */
     @GetMapping("/search")
     public String searchSales(
             @RequestParam(required = false)
             String saleID,
-            Model model) {
+            Model model,
+            RedirectAttributes redirectAttributes) {
 
-        List<Sale> sales;
-
+        // 未入力・空白のみの場合は検索結果画面へ進ませない
         if (saleID == null
                 || saleID.isBlank()) {
 
-            sales = saleRepository.findAll();
+            redirectAttributes.addFlashAttribute(
+                    "errorMessage",
+                    "検索キーワードを入力してください。");
 
-        } else {
-
-            sales =
-                    saleRepository
-                            .findBySaleIDContaining(
-                                    saleID);
+            return "redirect:/sales/search-form";
         }
+
+        List<Sale> sales =
+                saleRepository
+                        .findBySaleIDContaining(
+                                saleID.trim());
 
         model.addAttribute(
                 "sales",
@@ -207,6 +210,7 @@ public class SaleController {
 
         return "03-17-uriage/10-uriage_syuusei";
     }
+
     /**
      * 修正実行
      */
@@ -231,5 +235,18 @@ public class SaleController {
     public String complete() {
 
         return "03-17-uriage/06-uriage_syuusei_kanryou";
+    }
+
+    /**
+     * 売上全件表示（全件表示ボタン用）
+     */
+    @GetMapping("/search-all")
+    public String searchAllSales(Model model) {
+
+        model.addAttribute(
+                "sales",
+                saleRepository.findAll());
+
+        return "03-17-uriage/13-uriage_syuusei_kennsaku_kekka";
     }
 }

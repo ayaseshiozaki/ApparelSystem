@@ -22,61 +22,69 @@
             該当する売上情報がありません。
         </p>
 
-        <!-- 検索結果がある場合 -->
-        <table th:if="${!#lists.isEmpty(sales)}">
+        <!-- 検索結果がある場合（枠の中でスクロール） -->
+        <div class="table-wrap"
+             th:if="${!#lists.isEmpty(sales)}">
 
-            <thead>
-            <tr>
-                <th>売上ID</th>
-                <th>明細ID</th>
-                <th>受付ID</th>
-                <th>売上日時</th>
-                <th>数量</th>
-                <th>購入者年代</th>
-                <th>購入者性別</th>
-                <th>担当者</th>
-                <th>支払方法</th>
-                <th>操作</th>
-            </tr>
-            </thead>
+            <table>
 
-            <tbody>
+                <thead>
+                <tr>
+                    <th>売上ID</th>
+                    <th>明細ID</th>
+                    <th>受付ID</th>
+                    <th>売上日時</th>
+                    <th>数量</th>
+                    <th>購入者年代</th>
+                    <th>購入者性別</th>
+                    <th>担当者</th>
+                    <th>支払方法</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
 
-            <tr th:each="sale : ${sales}">
+                <tbody>
 
-                <td th:text="${sale.saleID}"></td>
+                <tr th:each="sale : ${sales}">
 
-                <td th:text="${sale.lineID}"></td>
+                    <td th:text="${sale.saleID}"></td>
 
-                <td th:text="${sale.acceptanceID}"></td>
+                    <td th:text="${sale.lineID}"></td>
 
-                <td th:text="${sale.saleDateAndTime}"></td>
+                    <td th:text="${sale.acceptanceID}"></td>
 
-                <td th:text="${sale.quantity}"></td>
+                    <!-- 日時を「2026/10/23 10:00」形式で表示 -->
+                    <td th:text="${sale.saleDateAndTime != null}
+                                 ? ${#temporals.format(sale.saleDateAndTime, 'yyyy/MM/dd HH:mm')}
+                                 : ''"></td>
 
-                <td th:text="${sale.buyersAgeGroup}"></td>
+                    <td th:text="${sale.quantity}"></td>
 
-                <td th:text="${sale.buyersGender}"></td>
+                    <td th:text="${sale.buyersAgeGroup}"></td>
 
-                <td th:text="${sale.contactPerson}"></td>
+                    <td th:text="${sale.buyersGender}"></td>
 
-                <td th:text="${sale.paymentMethod}"></td>
+                    <td th:text="${sale.contactPerson}"></td>
 
-                <td>
+                    <td th:text="${sale.paymentMethod}"></td>
 
-                    <!-- 修正画面へ -->
-                    <a th:href="@{/sales/edit/{id}(id=${sale.saleID})}"
-                       class="edit-btn">
-                        修正
-                    </a>
+                    <td>
 
-                </td>
+                        <!-- 修正画面へ -->
+                        <a th:href="@{/sales/edit/{id}(id=${sale.saleID})}"
+                           class="edit-btn">
+                            修正
+                        </a>
 
-            </tr>
+                    </td>
 
-            </tbody>
+                </tr>
 
-        </table>
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
 
