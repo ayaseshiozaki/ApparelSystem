@@ -23,7 +23,7 @@ body{
 /* -------------------- コンテナ -------------------- */
 .container{
     width:700px;
-    margin:60px auto;
+    margin:80px auto;
     text-align:center;
 }
 
@@ -31,11 +31,11 @@ body{
 h1{
     color:var(--accent);
     font-size:34px;
-    margin-bottom:60px;
+    margin-bottom:50px;
 }
 
-/* -------------------- 内容表示枠 -------------------- */
-.confirm-box{
+/* -------------------- 結果表示枠 -------------------- */
+.result-box{
     width:600px;
     height:250px;
     background:white;
@@ -48,7 +48,7 @@ h1{
     align-items:center;
 }
 
-.confirm-box p{
+.result-box p{
     font-size:20px;
     color:var(--text);
 }
@@ -57,11 +57,11 @@ h1{
 .button-area{
     display:flex;
     justify-content:center;
-    gap:80px;
+    gap:40px;
 }
 
 button{
-    width:220px;
+    width:180px;
     height:55px;
     border:none;
     border-radius:10px;
@@ -72,8 +72,13 @@ button{
     white-space:nowrap;
 }
 
-.exec-btn{
-    background:#333;
+.edit-btn{
+    background:var(--main);
+    color:var(--text);
+}
+
+.delete-btn{
+    background:#f08fb6;
     color:white;
 }
 

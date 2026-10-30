@@ -5,11 +5,11 @@ import com.example.apparelsystem.repository.SaleRepository;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/sales")
@@ -21,7 +21,9 @@ public class SaleController {
         this.saleRepository = saleRepository;
     }
 
-    // 売上登録画面を表示
+    /**
+     * 売上登録画面表示
+     */
     @GetMapping("/new")
     public String showSaleForm(Model model) {
 
@@ -30,63 +32,85 @@ public class SaleController {
                 saleRepository.findAll());
 
         return "03-17-uriage/04-uriage_touroku";
-    }    // 売上データを登録
+    }
+
+    /**
+     * 売上登録
+     */
     @PostMapping("/register")
     public String registerSale(
             @ModelAttribute Sale sale,
             RedirectAttributes redirectAttributes) {
 
-        // 売上IDが入力されていない場合は登録しない
-        if (sale.getSaleID() == null || sale.getSaleID().isBlank()) {
+        if (sale.getSaleID() == null
+                || sale.getSaleID().isBlank()) {
+
             redirectAttributes.addFlashAttribute(
-                    "errorMessage", "売上IDを入力してください。");
+                    "errorMessage",
+                    "売上IDを入力してください。");
+
             return "redirect:/sales/new";
         }
 
-        // 売上IDが8文字を超えている場合は登録しない
         if (sale.getSaleID().length() > 8) {
+
             redirectAttributes.addFlashAttribute(
-                    "errorMessage", "売上IDは8文字以内で入力してください。");
+                    "errorMessage",
+                    "売上IDは8文字以内で入力してください。");
+
             return "redirect:/sales/new";
         }
 
-        // 必須項目の確認
-        if (sale.getLineID() == null || sale.getLineID().isBlank()
+        if (sale.getLineID() == null
+                || sale.getLineID().isBlank()
                 || sale.getAcceptanceID() == null
                 || sale.getAcceptanceID().isBlank()) {
+
             redirectAttributes.addFlashAttribute(
-                    "errorMessage", "明細IDと受付IDを入力してください。");
+                    "errorMessage",
+                    "明細IDと受付IDを入力してください。");
+
             return "redirect:/sales/new";
         }
 
-        // IDの長さを確認
         if (sale.getLineID().length() > 8
                 || sale.getAcceptanceID().length() > 8) {
+
             redirectAttributes.addFlashAttribute(
-                    "errorMessage", "明細IDと受付IDは8文字以内で入力してください。");
+                    "errorMessage",
+                    "明細IDと受付IDは8文字以内で入力してください。");
+
             return "redirect:/sales/new";
         }
 
-        // 売上IDの重複を確認
-        if (saleRepository.existsById(sale.getSaleID())) {
+        if (saleRepository.existsById(
+                sale.getSaleID())) {
+
             redirectAttributes.addFlashAttribute(
-                    "errorMessage", "この売上IDはすでに使用されています。");
+                    "errorMessage",
+                    "この売上IDはすでに使用されています。");
+
             return "redirect:/sales/new";
         }
 
-        // 売上日時が未入力なら現在日時を設定
         if (sale.getSaleDateAndTime() == null) {
-            sale.setSaleDateAndTime(java.time.LocalDateTime.now());
+
+            sale.setSaleDateAndTime(
+                    java.time.LocalDateTime.now());
         }
 
-        // データベースに登録
         saleRepository.save(sale);
 
         redirectAttributes.addFlashAttribute(
-                "message", "売上を登録しました。");
+                "message",
+                "売上を登録しました。");
 
         return "redirect:/sales/new";
     }
+
+    /**
+     * 売上一覧表示
+     */
     @GetMapping("/list")
     public String listSales(Model model) {
 
@@ -95,5 +119,105 @@ public class SaleController {
                 saleRepository.findAll());
 
         return "03-17-uriage/04-uriage_touroku";
+    }
+
+    /**
+     * 売上情報検索画面を表示
+     */
+    @GetMapping("/search-form")
+    public String showSearchForm() {
+        return "03-17-uriage/09-uriagekensaku";
+    }
+
+    /**
+     * 売上検索
+     */
+    @GetMapping("/search")
+    public String searchSales(
+            @RequestParam(required = false)
+            String saleID,
+            Model model) {
+
+        List<Sale> sales;
+
+        if (saleID == null
+                || saleID.isBlank()) {
+
+            sales = saleRepository.findAll();
+
+        } else {
+
+            sales =
+                    saleRepository
+                            .findBySaleIDContaining(
+                                    saleID);
+        }
+
+        model.addAttribute(
+                "sales",
+                sales);
+
+        return "03-17-uriage/13-uriage_syuusei_kennsaku_kekka";
+    }
+
+    /**
+     * 修正画面表示
+     */
+    @GetMapping("/edit/{saleID}")
+    public String editSale(
+            @PathVariable String saleID,
+            Model model) {
+
+        Sale sale =
+                saleRepository
+                        .findById(saleID)
+                        .orElse(null);
+
+        model.addAttribute(
+                "sale",
+                sale);
+
+        return "03-17-uriage/10-uriage_syuusei";
+    }
+
+    /**
+     * 修正確認
+     */
+    @PostMapping("/confirm")
+    public String confirmSale(
+            @ModelAttribute Sale sale,
+            Model model) {
+
+        model.addAttribute(
+                "sale",
+                sale);
+
+        return "03-17-uriage/11-uriage_syuusei_kakunin";
+    }
+
+    /**
+     * 修正実行
+     */
+    @PostMapping("/update")
+    public String updateSale(
+            @ModelAttribute Sale sale,
+            RedirectAttributes redirectAttributes) {
+
+        saleRepository.save(sale);
+
+        redirectAttributes.addFlashAttribute(
+                "message",
+                "売上情報を修正しました。");
+
+        return "redirect:/sales/complete";
+    }
+
+    /**
+     * 修正完了画面
+     */
+    @GetMapping("/complete")
+    public String complete() {
+
+        return "03-17-uriage/06-uriage_syuusei_kanryou";
     }
 }
