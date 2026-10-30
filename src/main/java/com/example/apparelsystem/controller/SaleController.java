@@ -126,7 +126,7 @@ public class SaleController {
      */
     @GetMapping("/search-form")
     public String showSearchForm() {
-        return "03-17-uriage/09-uriagekensaku";
+        return "03-17-uriage/09-uriage_kensaku";
     }
 
     /**
@@ -195,6 +195,18 @@ public class SaleController {
         return "03-17-uriage/11-uriage_syuusei_kakunin";
     }
 
+    /**
+     * 修正確認画面から修正入力画面へ戻る
+     */
+    @PostMapping("/edit-back")
+    public String editBack(
+            @ModelAttribute Sale sale,
+            Model model) {
+
+        model.addAttribute("sale", sale);
+
+        return "03-17-uriage/10-uriage_syuusei";
+    }
     /**
      * 修正実行
      */

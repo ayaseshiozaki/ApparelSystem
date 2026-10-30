@@ -1,15 +1,53 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>修正完了</title>
-<link rel="stylesheet" href="../../static/css/03-17-uriage/06-uriage_syuusei_kanryou.css">
+    <meta charset="UTF-8">
+    <title>売上情報修正完了</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/03-17-uriage/06-uriage_syuusei_kanryou.css}">
 </head>
+
 <body>
-<div class="page-wrapper">
-<h1 class="page-title">修正完了</h1>
-<p class="complete-message">売上情報を更新しました</p>
-<button class="btn-menu" onclick="location.href='03-uriagekannri.html'">メニューへ戻る</button>
+
+<div class="container">
+
+    <h1>売上情報修正完了</h1>
+
+    <div class="complete-box">
+
+        <p th:if="${message}"
+           th:text="${message}">
+            売上情報を修正しました。
+        </p>
+
+        <p th:unless="${message}">
+            売上情報の修正が完了しました。
+        </p>
+
+    </div>
+
+    <div class="button-area">
+
+        <!-- もう一度検索する -->
+        <button type="button"
+                class="back-btn"
+                onclick="location.href='/sales/search-form'">
+            売上情報検索へ
+        </button>
+
+        <!-- 売上管理へ戻る -->
+        <button type="button"
+                class="menu-btn"
+                onclick="location.href='/uriage'">
+            売上管理へ戻る
+        </button>
+
+    </div>
+
 </div>
+
 </body>
+
 </html>

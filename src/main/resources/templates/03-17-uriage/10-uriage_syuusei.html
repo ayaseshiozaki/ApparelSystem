@@ -1,70 +1,164 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>売上情報修正</title>
-    <link rel="stylesheet" href="../../static/css/03-17-uriage/10-uriage_syuusei.css">
+
+    <link rel="stylesheet"
+          th:href="@{/css/03-17-uriage/10-uriage_syuusei.css}">
 </head>
+
 <body>
 
 <div class="container">
 
     <h1>売上情報修正</h1>
 
-    <form>
+    <!-- 修正内容を11番の確認画面へ送信 -->
+    <form th:action="@{/sales/confirm}"
+          th:object="${sale}"
+          method="post">
 
         <div class="form-grid">
 
-            <label>売上ID</label>
-            <input type="text" placeholder="ID表示（修正不可）" disabled>
+            <!-- 売上ID：修正不可 -->
+            <label for="saleID">売上ID</label>
 
-            <label>明細ID</label>
-            <input type="text" placeholder="テキスト入力">
+            <input id="saleID"
+                   type="text"
+                   th:field="*{saleID}"
+                   readonly>
 
-            <label>販売日</label>
-            <input type="date">
 
-            <label>商品名</label>
-            <select>
-                <option>アイテムの検索</option>
+            <!-- 明細ID：修正不可 -->
+            <label for="lineID">明細ID</label>
+
+            <input id="lineID"
+                   type="text"
+                   th:field="*{lineID}"
+                   readonly>
+
+
+            <!-- 受付ID：修正不可 -->
+            <label for="acceptanceID">受付ID</label>
+
+            <input id="acceptanceID"
+                   type="text"
+                   th:field="*{acceptanceID}"
+                   readonly>
+
+
+            <!-- 売上日時 -->
+            <label for="saleDateAndTime">売上日時</label>
+
+            <input id="saleDateAndTime"
+                   type="datetime-local"
+                   th:field="*{saleDateAndTime}"
+                   required>
+
+
+            <!-- 数量 -->
+            <label for="quantity">数量</label>
+
+            <input id="quantity"
+                   type="number"
+                   th:field="*{quantity}"
+                   min="1"
+                   required>
+
+
+            <!-- 購入者年代 -->
+            <label for="buyersAgeGroup">購入者年代</label>
+
+            <select id="buyersAgeGroup"
+                    th:field="*{buyersAgeGroup}">
+
+                <option value="">選択してください</option>
+                <option value="1">10代</option>
+                <option value="2">20代</option>
+                <option value="3">30代</option>
+                <option value="4">40代</option>
+                <option value="5">50代以上</option>
+
             </select>
 
-            <label>数量</label>
-            <input type="number" placeholder="数量">
 
-            <label>単価</label>
-            <input type="number" placeholder="（例）￥3000">
+            <!-- 購入者性別 -->
+            <label>購入者性別</label>
 
-            <label>担当者名</label>
-            <input type="text" placeholder="担当者名表示（修正不可）" disabled>
+            <div class="radio-group">
 
-            <label>支払方法</label>
-            <div class="check-group">
-                <label><input type="checkbox"> 現金</label>
-                <label><input type="checkbox"> カード</label>
-                <label><input type="checkbox"> QRコード</label>
+                <label>
+                    <input type="radio"
+                           th:field="*{buyersGender}"
+                           value="1">
+                    男性
+                </label>
+
+                <label>
+                    <input type="radio"
+                           th:field="*{buyersGender}"
+                           value="2">
+                    女性
+                </label>
+
             </div>
 
-            <label>年代</label>
-            <select>
-                <option>10代</option>
-                <option>20代</option>
-                <option>30代</option>
-                <option>40代</option>
-                <option>50代以上</option>
-            </select>
 
-            <label>性別</label>
+            <!-- 担当者 -->
+            <label for="contactPerson">担当者</label>
+
+            <input id="contactPerson"
+                   type="number"
+                   th:field="*{contactPerson}"
+                   required>
+
+
+            <!-- 支払方法 -->
+            <label>支払方法</label>
+
             <div class="radio-group">
-                <label><input type="radio" name="sex"> 男性</label>
-                <label><input type="radio" name="sex"> 女性</label>
+
+                <label>
+                    <input type="radio"
+                           th:field="*{paymentMethod}"
+                           value="1">
+                    現金
+                </label>
+
+                <label>
+                    <input type="radio"
+                           th:field="*{paymentMethod}"
+                           value="2">
+                    カード
+                </label>
+
+                <label>
+                    <input type="radio"
+                           th:field="*{paymentMethod}"
+                           value="3">
+                    QRコード
+                </label>
+
             </div>
 
         </div>
 
+
         <div class="button-area">
-            <button type="submit" class="exec-btn" onclick="location.href='11-uriage_syuusei_kakunin.html'">実行</button>
-            <button type="button" class="back-btn" onclick="location.href='09-uriage_kensaku.html'">戻る</button>
+
+            <button type="submit"
+                    class="exec-btn">
+                確認
+            </button>
+
+            <button type="button"
+                    class="back-btn"
+                    onclick="location.href='/sales/search-form'">
+                戻る
+            </button>
+
         </div>
 
     </form>
@@ -72,4 +166,5 @@
 </div>
 
 </body>
+
 </html>
