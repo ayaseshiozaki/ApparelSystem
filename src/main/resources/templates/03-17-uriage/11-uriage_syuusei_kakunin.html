@@ -1,26 +1,176 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>修正確認</title>
-    <link rel="stylesheet" href="../../static/css/03-17-uriage/11-uriage_syuusei_kakunin.css">
+
+    <link rel="stylesheet"
+          th:href="@{/css/03-17-uriage/11-uriage_syuusei_kakunin.css}">
 </head>
+
 <body>
 
 <div class="container">
 
     <h1>修正確認</h1>
 
+    <p>
+        以下の内容で売上情報を修正します。
+    </p>
+
     <div class="confirm-box">
-        <p>修正内容表示</p>
+
+        <table class="confirm-table">
+
+            <tbody>
+
+            <tr>
+                <th>売上ID</th>
+                <td th:text="${sale.saleID}"></td>
+            </tr>
+
+            <tr>
+                <th>明細ID</th>
+                <td th:text="${sale.lineID}"></td>
+            </tr>
+
+            <tr>
+                <th>受付ID</th>
+                <td th:text="${sale.acceptanceID}"></td>
+            </tr>
+
+            <tr>
+                <th>売上日時</th>
+                <td th:text="${sale.saleDateAndTime}"></td>
+            </tr>
+
+            <tr>
+                <th>数量</th>
+                <td th:text="${sale.quantity}"></td>
+            </tr>
+
+            <tr>
+                <th>購入者年代</th>
+
+                <td>
+                    <span th:if="${sale.buyersAgeGroup == '1'}">
+                        10代
+                    </span>
+
+                    <span th:if="${sale.buyersAgeGroup == '2'}">
+                        20代
+                    </span>
+
+                    <span th:if="${sale.buyersAgeGroup == '3'}">
+                        30代
+                    </span>
+
+                    <span th:if="${sale.buyersAgeGroup == '4'}">
+                        40代
+                    </span>
+
+                    <span th:if="${sale.buyersAgeGroup == '5'}">
+                        50代以上
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <th>購入者性別</th>
+
+                <td>
+                    <span th:if="${sale.buyersGender == '1'}">
+                        男性
+                    </span>
+
+                    <span th:if="${sale.buyersGender == '2'}">
+                        女性
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <th>担当者</th>
+                <td th:text="${sale.contactPerson}"></td>
+            </tr>
+
+            <tr>
+                <th>支払方法</th>
+
+                <td>
+                    <span th:if="${sale.paymentMethod == '1'}">
+                        現金
+                    </span>
+
+                    <span th:if="${sale.paymentMethod == '2'}">
+                        カード
+                    </span>
+
+                    <span th:if="${sale.paymentMethod == '3'}">
+                        QRコード
+                    </span>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
     </div>
 
-    <div class="button-area">
-        <button class="exec-btn" onclick="location.href='06-uriage_syuusei_kanryou.html'">修正実行</button>
-        <button class="back-btn" onclick="location.href='10-uriage_syuusei.html'">修正入力へ戻る</button>
-    </div>
+    <!-- 修正内容をDB更新処理へ送信 -->
+    <form th:action="@{/sales/update}"
+          th:object="${sale}"
+          method="post">
+
+        <!-- 画面には表示せず、更新処理へ全項目を渡す -->
+        <input type="hidden"
+               th:field="*{saleID}">
+
+        <input type="hidden"
+               th:field="*{lineID}">
+
+        <input type="hidden"
+               th:field="*{acceptanceID}">
+
+        <input type="hidden"
+               th:field="*{saleDateAndTime}">
+
+        <input type="hidden"
+               th:field="*{quantity}">
+
+        <input type="hidden"
+               th:field="*{buyersAgeGroup}">
+
+        <input type="hidden"
+               th:field="*{buyersGender}">
+
+        <input type="hidden"
+               th:field="*{contactPerson}">
+
+        <input type="hidden"
+               th:field="*{paymentMethod}">
+
+        <div class="button-area">
+
+            <button type="submit"
+                    class="exec-btn">
+                修正実行
+            </button>
+
+            <button type="submit"
+                    class="back-btn"
+                    th:formaction="@{/sales/edit-back}">
+                修正入力へ戻る
+            </button>
+
+        </div>
+
+    </form>
 
 </div>
 
 </body>
+
 </html>

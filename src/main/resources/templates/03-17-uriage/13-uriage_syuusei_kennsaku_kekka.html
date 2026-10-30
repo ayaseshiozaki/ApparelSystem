@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>検索結果一覧</title>
-    <link rel="stylesheet" href="../../static/css/03-17-uriage/13-uriage_syuusei_kennsaku_kekka.css">
+
+    <link rel="stylesheet"
+          th:href="@{/css/03-17-uriage/13-uriage_syuusei_kennsaku_kekka.css}">
 </head>
+
 <body>
 
 <div class="container">
@@ -12,13 +16,87 @@
     <h1>検索結果一覧</h1>
 
     <div class="result-box">
-        <p>検索結果一覧表示</p>
+
+        <!-- 検索結果が0件の場合 -->
+        <p th:if="${#lists.isEmpty(sales)}">
+            該当する売上情報がありません。
+        </p>
+
+        <!-- 検索結果がある場合 -->
+        <table th:if="${!#lists.isEmpty(sales)}">
+
+            <thead>
+            <tr>
+                <th>売上ID</th>
+                <th>明細ID</th>
+                <th>受付ID</th>
+                <th>売上日時</th>
+                <th>数量</th>
+                <th>購入者年代</th>
+                <th>購入者性別</th>
+                <th>担当者</th>
+                <th>支払方法</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="sale : ${sales}">
+
+                <td th:text="${sale.saleID}"></td>
+
+                <td th:text="${sale.lineID}"></td>
+
+                <td th:text="${sale.acceptanceID}"></td>
+
+                <td th:text="${sale.saleDateAndTime}"></td>
+
+                <td th:text="${sale.quantity}"></td>
+
+                <td th:text="${sale.buyersAgeGroup}"></td>
+
+                <td th:text="${sale.buyersGender}"></td>
+
+                <td th:text="${sale.contactPerson}"></td>
+
+                <td th:text="${sale.paymentMethod}"></td>
+
+                <td>
+
+                    <!-- 修正画面へ -->
+                    <a th:href="@{/sales/edit/{id}(id=${sale.saleID})}"
+                       class="edit-btn">
+                        修正
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
     </div>
 
+
     <div class="button-area">
-        <button class="edit-btn" onclick="location.href='10-uriage_syuusei.html'">修正</button>
-        <button class="delete-btn" onclick="location.href='14-uriagesakuzyozikkou.html'">削除</button>
-        <button class="back-btn" onclick="location.href='03-uriagekannri.html'">戻る</button>
+
+        <!-- 09の検索画面に戻る -->
+        <button type="button"
+                class="back-btn"
+                onclick="location.href='/sales/search-form'">
+            検索画面へ戻る
+        </button>
+
+        <!-- 売上管理画面に戻る -->
+        <button type="button"
+                class="back-btn"
+                onclick="location.href='/uriage'">
+            売上管理へ戻る
+        </button>
+
     </div>
 
 </div>
