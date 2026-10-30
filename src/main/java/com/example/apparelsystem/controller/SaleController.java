@@ -149,7 +149,7 @@ public class SaleController {
                 "sales",
                 sales);
 
-        return "03-17-uriage/13-uriagesyuuseikensakukekka";
+        return "03-17-uriage/13-uriage_syuusei_kennsaku_kekka";
     }
 
     /**
@@ -169,7 +169,7 @@ public class SaleController {
                 "sale",
                 sale);
 
-        return "03-17-uriage/10-uriagesyuusei";
+        return "03-17-uriage/10-uriage_syuusei";
     }
 
     /**
@@ -184,7 +184,7 @@ public class SaleController {
                 "sale",
                 sale);
 
-        return "03-17-uriage/11-uriagesyuuseikakunin";
+        return "03-17-uriage/11-uriage_syuusei_kakunin";
     }
 
     /**
@@ -210,6 +210,6 @@ public class SaleController {
     @GetMapping("/complete")
     public String complete() {
 
-        return "03-17-uriage/06-uriagesyuuseikanryou";
+        return "03-17-uriage/06-uriage_syuusei_kanryou";
     }
 }

@@ -22,70 +22,42 @@ body{
 
 /* -------------------- コンテナ -------------------- */
 .container{
-    width:1100px;
-    margin:40px auto;
+    width:700px;
+    margin:80px auto;
+    text-align:center;
 }
 
 /* -------------------- タイトル -------------------- */
 h1{
-    text-align:center;
     color:var(--accent);
-    margin-bottom:60px;
     font-size:34px;
+    margin-bottom:50px;
 }
 
-/* -------------------- フォーム配置 -------------------- */
-.form-grid{
-    display:grid;
-    grid-template-columns: 110px 260px 110px 260px;
-    gap:22px 40px;
-    align-items:center;
-}
-
-label{
-    font-weight:bold;
-    color:var(--text);
-}
-
-/* 空セル対策 */
-.form-grid > div:empty{
-    height:0;
-}
-
-/* -------------------- 入力欄 -------------------- */
-input[type=text],
-input[type=number],
-input[type=date],
-select{
-    width:100%;
-    height:42px;
-    padding:10px;
-    border:2px solid var(--border);
-    border-radius:8px;
-    font-size:15px;
+/* -------------------- 内容表示枠 -------------------- */
+.confirm-box{
+    width:600px;
+    height:250px;
     background:white;
-}
-
-input:focus,
-select:focus{
-    outline:none;
-    border-color:var(--accent);
-}
-
-/* -------------------- ラジオ・チェック -------------------- */
-.radio-group,
-.check-group{
+    border:2px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    margin:0 auto 70px;
     display:flex;
-    gap:25px;
+    justify-content:center;
     align-items:center;
+}
+
+.confirm-box p{
+    font-size:20px;
+    color:var(--text);
 }
 
 /* -------------------- ボタン -------------------- */
 .button-area{
-    margin-top:60px;
     display:flex;
     justify-content:center;
-    gap:120px;
+    gap:80px;
 }
 
 button{
@@ -101,8 +73,8 @@ button{
 }
 
 .exec-btn{
-    background:#333;
-    color:white;
+    background:var(--main);
+    color:var(--text);
 }
 
 .back-btn{
