@@ -36,13 +36,11 @@ public class SupplierController {
         model.addAttribute("supplier",new Supplier());
         return "30-43-siiresaki/31-siiresaki_touroku";
     }
-
     @PostMapping("/supplier/confirm")
         public String confirmRegister(@ModelAttribute Supplier supplier,Model model){
         model.addAttribute("supplier",supplier);
         return "30-43-siiresaki/32-siiresaki_touroku_kakunin";
     }
-
     @PostMapping("/supplier/complete")
     public String completeRegister(@ModelAttribute Supplier supplier){
         supplierRepository.save(supplier); // ★DBに登録・保存する処理を追加！
