@@ -122,6 +122,14 @@ public class SaleController {
     }
 
     /**
+     * 売上情報検索画面を表示
+     */
+    @GetMapping("/search-form")
+    public String showSearchForm() {
+        return "03-17-uriage/09-uriagekensaku";
+    }
+
+    /**
      * 売上検索
      */
     @GetMapping("/search")
