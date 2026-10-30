@@ -3,43 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>仕入先情報検索</title>
-    <link rel="stylesheet" th:href="@{css/30-43-siiresaki/34-siiresakisyuusei.css}">
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/34-siiresaki_syuusei.css}">
 </head>
 <body>
 
 <div class="container">
-
     <h1>仕入先情報検索</h1>
 
-    <div class="search-area">
-
+    <!-- GETメソッドで /supplier/search/result へ送信 -->
+    <form class="search-area" th:action="@{/supplier/search/result}" method="get">
         <h2 class="section-title">検索条件</h2>
 
         <label>仕入れID</label>
-        <input type="text" placeholder="ID表示（修正不可）" disabled>
+        <input type="text" name="supplierID" placeholder="仕入れIDを入力">
 
         <label>仕入れ先名</label>
-        <input type="text" placeholder="仕入れ先名を入力">
+        <input type="text" name="supplierName" placeholder="仕入れ先名を入力">
 
         <label>仕入れ住所</label>
-        <input type="text" placeholder="仕入れ住所を入力">
+        <input type="text" name="supplierAddress" placeholder="仕入れ住所を入力">
 
         <label>電話番号</label>
-        <input type="text" placeholder="電話番号を入力">
-
-        <label>メールアドレス</label>
-        <input type="text" placeholder="メールアドレスを入力">
+        <input type="text" name="phoneNumber" placeholder="電話番号を入力">
 
         <label>担当者名</label>
-        <input type="text" placeholder="担当者名表示（修正不可）" disabled>
+        <input type="text" name="contactPersonName" placeholder="担当者名を入力">
+
+        <label>メールアドレス</label>
+        <input type="email" name="mailAddress" placeholder="メールアドレスを入力">
 
         <div class="button-area">
-            <button class="search-btn" onclick="location.href='35-siiresaki_syuusei_kennsaku_kekka.html'">検索</button>
-            <button class="back-btn" onclick="location.href='30-siiresaki_kannri.html'">戻る</button>
+            <button type="submit" class="search-btn">検索</button>
+            <button type="button" class="back-btn" th:onclick="|location.href='@{/supplier/menu}'|">戻る</button>
         </div>
-
-    </div>
-
+    </form>
 </div>
 
 </body>

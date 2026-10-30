@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>仕入先情報修正</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/36-siiresaki_syuusei_zikkou.css">
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/36-siiresaki_syuusei_zikkou.css}">
 </head>
 <body>
 
@@ -11,34 +11,39 @@
 
     <h1>仕入先情報修正</h1>
 
-    <div class="edit-area">
+    <!-- 修正確認(/supplier/edit/confirm)へPOST送信 -->
+    <form class="edit-area" th:action="@{/supplier/edit/confirm}" th:object="${supplier}" method="post">
 
-        <h2 class="section-title">検索条件</h2>
+        <h2 class="section-title">修正内容</h2>
 
+        <!-- IDは変更不可（readonly）にして確実に送信する -->
         <label>仕入れID</label>
-        <input type="text" placeholder="ID表示（修正不可）" disabled>
+        <input type="text" th:field="*{supplierID}" readonly style="background-color: #f0f0f0; cursor: not-allowed;">
 
         <label>仕入れ先名</label>
-        <input type="text" placeholder="仕入れ先名を入力">
+        <input type="text" th:field="*{supplierName}" placeholder="仕入れ先名を入力">
 
         <label>仕入れ先住所</label>
-        <input type="text" placeholder="仕入れ先住所を入力">
+        <input type="text" th:field="*{supplierAddress}" placeholder="仕入れ先住所を入力">
 
         <label>電話番号</label>
-        <input type="text" placeholder="電話番号を入力">
-
-        <label>メールアドレス</label>
-        <input type="text" placeholder="メールアドレスを入力">
+        <input type="text" th:field="*{phoneNumber}" placeholder="電話番号を入力">
 
         <label>担当者名</label>
-        <input type="text" placeholder="担当者名表示（修正不可）" disabled>
+        <input type="text" th:field="*{contactPersonName}" placeholder="担当者名を入力">
+
+        <label>メールアドレス</label>
+        <input type="email" th:field="*{mailAddress}" placeholder="メールアドレスを入力">
+
+        <!-- 登録日を変えずに保持するためのhidden -->
+        <input type="hidden" th:field="*{registrationDate}">
 
         <div class="button-area">
-            <button class="confirm-btn" onclick="location.href='37-siiresakisyuuseikakunin.html'">確認</button>
-            <button class="back-btn" onclick="location.href='35-siiresakisyuuseikennsakukekka.html'">戻る</button>
+            <button type="submit" class="confirm-btn">確認</button>
+            <button type="button" class="back-btn" onclick="history.back()">戻る</button>
         </div>
 
-    </div>
+    </form>
 
 </div>
 

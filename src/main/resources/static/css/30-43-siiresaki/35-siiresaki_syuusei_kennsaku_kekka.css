@@ -20,71 +20,98 @@ body{
     color:var(--text);
 }
 
-/* コンテナ */
+/* コンテナ：横幅を1050pxに拡張してゆったり表示 */
 .container{
-    width:700px;
-    margin:60px auto;
-    text-align:center;
+    width: 1050px;
+    margin: 50px auto;
+    text-align: center;
 }
 
 /* タイトル */
 h1{
     color:var(--accent);
     font-size:34px;
-    margin-bottom:60px;
+    margin-bottom:35px;
 }
 
-/* 結果表示枠 */
+/* 結果表示枠：固定幅・高さを解除し、テーブル全体を包むカードに変更 */
 .result-box{
-    width:600px;
-    height:250px;
-    background:white;
-    border:2px solid var(--border);
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-    margin:0 auto 70px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    width: 100%;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(246, 184, 210, 0.25);
+    padding: 25px 30px;
+    margin-bottom: 40px;
 }
 
 .result-box p{
-    font-size:20px;
-    color:var(--text);
+    font-size: 18px;
+    color: var(--text);
+    padding: 30px 0;
 }
 
-/* ボタンエリア */
+/* テーブルスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 15px;
+}
+
+th {
+    background-color: var(--sub);
+    color: var(--text);
+    font-weight: bold;
+}
+
+/* 操作ボタン（修正ボタン） */
+.action-btn {
+    background: var(--main);
+    color: var(--text);
+    border: none;
+    padding: 7px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: .2s;
+}
+
+.action-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* 下部ボタンエリア */
 .button-area{
-    display:flex;
-    justify-content:center;
-    gap:80px;
+    display: flex;
+    justify-content: center;
 }
 
-/* ボタン */
-button{
-    width:200px;
-    height:55px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-    white-space:nowrap;
-}
-
-.edit-btn{
-    background:#333;
-    color:white;
-}
-
+/* 戻るボタン */
 .back-btn{
-    background:#F9DBE7;
-    color:var(--text);
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #FCE4EF;
+    color: var(--text);
+    transition: .2s;
 }
 
-button:hover{
-    transform:translateY(-3px);
-    background:var(--accent);
-    color:white;
+.back-btn:hover{
+    transform: translateY(-2px);
+    background: var(--accent);
+    color: white;
 }

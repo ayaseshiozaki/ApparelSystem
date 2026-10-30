@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>修正完了</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/38-siiresaki_syuusei_kanryou.css">
+    <!-- static配下のCSSを正しく参照 -->
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/33-siiresaki_touroku_kanryou.css}">
 </head>
 <body>
 
@@ -14,7 +15,8 @@
     <p class="message">仕入れ先情報を更新しました</p>
 
     <div class="button-area">
-        <button class="back-btn" onclick="location.href='30-siiresakikannri.html'">メニューへ戻る</button>
+        <button type="button" class="back-btn" th:onclick="|location.href='@{/supplier/menu}'|">メニューへ戻る</button>
+        <button type="button" class="back-btn" th:onclick="|location.href='@{/supplier/search}'|" style="margin-left: 20px;">続けて検索する</button>
     </div>
 
 </div>

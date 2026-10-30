@@ -3,33 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>情報メニュー</title>
-    <!-- staticフォルダ配下のCSSを読み込む -->
+    <!-- 先頭に / を補ってルート相対で読み込む -->
     <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/30-siiresaki_kannri.css}">
 </head>
 <body>
 
-<div class="container">
-    <div class="menu-grid">
+<!-- CSS側の .grid-container に合わせる -->
+<div class="grid-container">
 
-        <!-- 登録画面へのリンク -->
-        <a th:href="@{/supplier/register}" style="text-decoration: none; color: inherit;">
-            <div class="menu-item">
-                <div class="icon">⬇</div>
+    <!-- ① 情報登録画面へのリンク -->
+    <a th:href="@{/supplier/register}" style="text-decoration: none; color: inherit;">
+        <div class="grid-card">
+            <div class="white-box">
+                <div style="font-size: 40px; margin-bottom: 10px;">⬇</div>
                 <p>情報登録</p>
             </div>
-        </a>
+        </div>
+    </a>
 
-        <div class="menu-item">
-            <div class="icon">🗑</div>
+    <!-- ② 情報削除画面（未実装） -->
+    <div class="grid-card">
+        <div class="white-box">
+            <div style="font-size: 40px; margin-bottom: 10px;">🗑</div>
             <p>情報削除</p>
         </div>
-
-        <div class="menu-item">
-            <div class="icon">🧽</div>
-            <p>情報修正</p>
-        </div>
-
     </div>
+
+    <!-- ③ 情報修正（検索）画面へのリンク -->
+    <a th:href="@{/supplier/search}" style="text-decoration: none; color: inherit;">
+        <div class="grid-card">
+            <div class="white-box">
+                <div style="font-size: 40px; margin-bottom: 10px;">🧽</div>
+                <p>情報修正</p>
+            </div>
+        </div>
+    </a>
+
 </div>
 
 </body>

@@ -23,7 +23,7 @@ public class Supplier {
     private String supplierAddress;
 
     @Column(name="PhoneNumber")
-    private String PhoneNumber;
+    private String phoneNumber;
 
     @Column(name="ContactPersonName")
     private String contactPersonName;
@@ -57,9 +57,9 @@ public class Supplier {
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
-    public void setPhoneNumber(String phoneNumber) {this.PhoneNumber = phoneNumber;}
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
     public String getContactPersonName() {
         return contactPersonName;

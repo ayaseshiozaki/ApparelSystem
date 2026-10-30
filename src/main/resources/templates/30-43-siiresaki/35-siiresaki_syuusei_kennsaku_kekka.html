@@ -1,25 +1,47 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>検索結果一覧</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/35-siiresaki_syuusei_kennsaku_kekka.css">
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/35-siiresaki_syuusei_kennsaku_kekka.css}">
 </head>
 <body>
 
 <div class="container">
-
     <h1>検索結果一覧</h1>
 
     <div class="result-box">
-        <p>検索結果一覧表示</p>
+        <p th:if="${#lists.isEmpty(suppliers)}">該当する仕入れ先が見つかりませんでした。</p>
+
+        <table th:if="${not #lists.isEmpty(suppliers)}">
+            <thead>
+            <tr>
+                <th style="width: 8%;">仕入れID</th>
+                <th style="width: 25%;">仕入れ先名</th>
+                <th style="width: 32%;">住所</th>
+                <th style="width: 15%;">電話番号</th>
+                <th style="width: 12%;">担当者名</th>
+                <th style="width: 8%; text-align: center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s : ${suppliers}">
+                <td th:text="${s.supplierID}"></td>
+                <td th:text="${s.supplierName}"></td>
+                <td th:text="${s.supplierAddress}"></td>
+                <td th:text="${s.phoneNumber}"></td>
+                <td th:text="${s.contactPersonName}"></td>
+                <td style="text-align: center;">
+                    <a th:href="@{/supplier/edit(id=${s.supplierID})}" class="action-btn">修正</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="button-area">
-        <button class="edit-btn" onclick="location.href='36-siiresakisyuuseizikkou.html'">修正</button>
-        <button class="back-btn" onclick="location.href='30-siiresakikannri.html'">戻る</button>
+        <button type="button" class="back-btn" th:onclick="|location.href='@{/supplier/search}'|">検索条件へ戻る</button>
     </div>
-
 </div>
 
 </body>

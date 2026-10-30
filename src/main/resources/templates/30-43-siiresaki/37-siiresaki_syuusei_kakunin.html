@@ -1,24 +1,55 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>修正確認</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/37-siiresaki_syuusei_kakunin.css">
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/32-siiresaki_touroku_kakunin.css}">
 </head>
 <body>
 
 <div class="container">
 
-    <h1>修正確認</h1>
+    <h1>仕入れ先情報 修正確認</h1>
 
-    <div class="confirm-box">
-        <p>修正内容表示</p>
-    </div>
+    <form th:action="@{/supplier/edit/complete}" th:object="${supplier}" method="post">
+        <div class="confirm-area">
 
-    <div class="button-area">
-        <button class="exec-btn" onclick="location.href='38-siiresakisyuuseikanryou.html'">修正実行</button>
-        <button class="back-btn" onclick="location.href='36-siiresakisyuuseizikkou.html'">修正入力へ戻る</button>
-    </div>
+            <label>仕入れID</label>
+            <p class="value" th:text="*{supplierID}">仕入れID表示</p>
+            <input type="hidden" th:field="*{supplierID}">
+
+            <label>仕入れ先名</label>
+            <p class="value" th:text="*{supplierName}">仕入れ先名表示</p>
+            <input type="hidden" th:field="*{supplierName}">
+
+            <label>仕入れ住所</label>
+            <p class="value" th:text="*{supplierAddress}">仕入れ住所表示</p>
+            <input type="hidden" th:field="*{supplierAddress}">
+
+            <label>電話番号</label>
+            <p class="value" th:text="*{phoneNumber}">電話番号表示</p>
+            <input type="hidden" th:field="*{phoneNumber}">
+
+            <label>担当者名</label>
+            <p class="value" th:text="*{contactPersonName}">担当者名表示</p>
+            <input type="hidden" th:field="*{contactPersonName}">
+
+            <label>メールアドレス</label>
+            <p class="value" th:text="*{mailAddress}">メールアドレス表示</p>
+            <input type="hidden" th:field="*{mailAddress}">
+
+            <!-- 登録日を保持 -->
+            <input type="hidden" th:field="*{registrationDate}">
+
+            <p class="question" style="margin-top: 25px;">この内容で更新してよろしいですか？</p>
+
+            <div class="button-area">
+                <button type="submit" class="register-btn">修正実行</button>
+                <button type="button" class="back-btn" onclick="history.back()">修正入力へ戻る</button>
+            </div>
+
+        </div>
+    </form>
 
 </div>
 
