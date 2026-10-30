@@ -411,13 +411,13 @@ public class CsvUploadController {
                         + "件の売上情報を登録しました。"
         );
 
-        return "redirect:/sales/complete";
+        return "redirect:/sales/register-complete";
     }
 
     /*
      * 登録完了画面を表示
      */
-    @GetMapping("/sales/complete")
+    @GetMapping("/sales/register-complete")
     public String showCompletePage() {
 
         return "03-17-uriage/12-uriage_touroku_kanryou";

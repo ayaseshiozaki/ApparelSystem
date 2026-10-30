@@ -14,16 +14,23 @@
     --text:#7A4C63;
 }
 
+html,
+body{
+    min-height:100vh;
+}
+
 body{
     background:var(--bg);
     font-family:"Yu Gothic","Meiryo",sans-serif;
     color:var(--text);
+    padding:40px 16px;
 }
 
 /* -------------------- コンテナ -------------------- */
 .container{
-    width:700px;
-    margin:80px auto;
+    width:100%;
+    max-width:1100px;
+    margin:40px auto;
     text-align:center;
 }
 
@@ -36,21 +43,69 @@ h1{
 
 /* -------------------- 結果表示枠 -------------------- */
 .result-box{
-    width:600px;
-    height:250px;
+    width:100%;
     background:white;
     border:2px solid var(--border);
     border-radius:12px;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
-    margin:0 auto 70px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    margin:0 auto 50px;
+    padding:16px;
+    overflow:hidden;
 }
 
+/* 0件のときのメッセージ */
 .result-box p{
     font-size:20px;
     color:var(--text);
+    padding:80px 0;
+}
+
+/* -------------------- 表 -------------------- */
+/* 表は枠の中でスクロール */
+.table-wrap{
+    width:100%;
+    max-height:60vh;
+    overflow:auto;
+}
+
+.table-wrap table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table-wrap th,
+.table-wrap td{
+    padding:10px 12px;
+    white-space:nowrap;   /* 日時や「修正」を折り返さない */
+    text-align:center;
+    border-bottom:1px solid var(--sub);
+}
+
+/* スクロールしても見出し行は上に固定 */
+.table-wrap thead th{
+    position:sticky;
+    top:0;
+    background:var(--sub);
+    color:var(--accent);
+    z-index:1;
+}
+
+/* -------------------- 修正リンク -------------------- */
+.edit-btn{
+    display:inline-block;
+    padding:6px 14px;
+    background:var(--main);
+    color:var(--text);
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    white-space:nowrap;
+    transition:.3s;
+}
+
+.edit-btn:hover{
+    background:var(--accent);
+    color:white;
 }
 
 /* -------------------- ボタン -------------------- */
@@ -70,11 +125,6 @@ button{
     cursor:pointer;
     transition:.3s;
     white-space:nowrap;
-}
-
-.edit-btn{
-    background:var(--main);
-    color:var(--text);
 }
 
 .delete-btn{

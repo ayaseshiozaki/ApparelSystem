@@ -19,6 +19,7 @@
         検索ボタンを押すと、
         GET /sales/search?saleID=入力値
         の形式でSaleControllerへ送信する
+        ※未入力の場合はブラウザが送信を止める（required）
     -->
     <form th:action="@{/sales/search}"
           method="get">
@@ -33,7 +34,8 @@
                    type="text"
                    name="saleID"
                    maxlength="8"
-                   placeholder="例：S0000008">
+                   placeholder="例：S0000008"
+                   required>
 
         </div>
 
@@ -50,10 +52,10 @@
                 検索
             </button>
 
-            <!-- 空欄検索で全件表示 -->
+            <!-- 全件表示（キーワード不要の専用URLへ） -->
             <button type="button"
                     class="search-btn"
-                    onclick="location.href='/sales/search'">
+                    onclick="location.href='/sales/search-all'">
                 全件表示
             </button>
 
