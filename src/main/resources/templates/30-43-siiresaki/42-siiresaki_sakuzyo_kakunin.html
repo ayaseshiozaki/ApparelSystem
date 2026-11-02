@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>削除確認</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/42-siiresaki_sakuzyo_kakunin.css">
+    <title>削除完了</title>
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/33-siiresaki_touroku_kanryou.css(v=2)}">
 </head>
 <body>
 
 <div class="container">
+    <h1>削除完了</h1>
 
-    <h1>削除確認</h1>
-
-    <div class="result-box">
-        <p>仕入先情報を削除しました。<br>仕入れID：SUPPLIER_000123</p>
+    <div class="result-box" style="margin: 40px auto; font-size: 20px; line-height: 1.8;">
+        <p>仕入先情報を削除しました。</p>
+        <p style="font-weight: bold; color: #E85A9A;">仕入れID：<span th:text="${deletedID}"></span></p>
     </div>
 
     <div class="button-area">
-        <button class="list-btn" onclick="location.href='30-siiresakikannri.html'">一覧へ戻る</button>
-        <button class="back-btn" onclick="location.href='41-siiresakisakuzyozikkou.html'">削除前の画面に戻る</button>
+        <button type="button" class="back-btn" th:onclick="|location.href='@{/supplier/menu}'|">メニューへ戻る</button>
     </div>
-
 </div>
 
 </body>

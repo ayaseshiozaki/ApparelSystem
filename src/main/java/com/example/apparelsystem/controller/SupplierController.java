@@ -96,4 +96,49 @@ public class SupplierController {
         supplierRepository.save(supplier); // 主キーが一致するレコードをUPDATE
         return "30-43-siiresaki/38-siiresaki_syuusei_kanryou";
     }
+
+    // --- 削除機能 ---
+
+    // ⑩ 削除用検索画面（39）を表示
+    @GetMapping("/supplier/delete/search")
+    public String showDeleteSearchForm() {
+        return "30-43-siiresaki/39-siiresaki_sakuzyo";
+    }
+
+    // ⑪ 削除用検索結果一覧画面（40）を表示
+    @GetMapping("/supplier/delete/search/result")
+    public String searchDeleteSuppliers(
+            @RequestParam(name = "supplierID", defaultValue = "") String supplierID,
+            @RequestParam(name = "supplierName", defaultValue = "") String supplierName,
+            @RequestParam(name = "supplierAddress", defaultValue = "") String supplierAddress,
+            @RequestParam(name = "phoneNumber", defaultValue = "") String phoneNumber,
+            @RequestParam(name = "contactPersonName", defaultValue = "") String contactPersonName,
+            @RequestParam(name = "mailAddress", defaultValue = "") String mailAddress,
+            Model model) {
+
+        List<Supplier> searchResults = supplierRepository.searchSuppliers(
+                supplierID, supplierName, supplierAddress, phoneNumber, contactPersonName, mailAddress
+        );
+        model.addAttribute("suppliers", searchResults);
+        return "30-43-siiresaki/40-siiresaki_sakuzyo_kennsaku_kekka";
+    }
+
+    // ⑫ 削除実行確認画面（41）を表示：対象IDのデータを取得して表示
+    @GetMapping("/supplier/delete/confirm")
+    public String showDeleteConfirm(@RequestParam("id") String id, Model model) {
+        Supplier supplier = supplierRepository.findById(id).orElse(null);
+        model.addAttribute("supplier", supplier);
+        return "30-43-siiresaki/41-siiresaki_sakuzyo_zikkou";
+    }
+
+    // ⑬ 削除実行処理（42）：DBから削除して完了画面を表示
+    @PostMapping("/supplier/delete/execute")
+    public String executeDelete(@RequestParam("supplierID") String supplierID, Model model) {
+        // DBから該当IDのレコードを削除
+        supplierRepository.deleteById(supplierID);
+        // 完了画面に削除したIDを表示するために渡す
+        model.addAttribute("deletedID", supplierID);
+        return "30-43-siiresaki/42-siiresaki_sakuzyo_kakunin";
+    }
+
 }

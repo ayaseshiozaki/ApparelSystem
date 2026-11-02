@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>仕入先情報削除実行</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/41-siiresaki_sakuzyo_zikkou.css">
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/32-siiresaki_touroku_kakunin.css(v=2)}">
 </head>
 <body>
 
 <div class="container">
+    <h1>仕入先情報 削除確認</h1>
 
-    <h1>仕入先情報削除実行</h1>
+    <form th:action="@{/supplier/delete/execute}" method="post">
+        <!-- 削除対象の主キーをhiddenで送信 -->
+        <input type="hidden" name="supplierID" th:value="${supplier.supplierID}">
 
-    <div class="delete-area">
+        <div class="confirm-area">
+            <label>仕入れID</label>
+            <p class="value" th:text="${supplier.supplierID}"></p>
 
-        <label>仕入れID</label>
-        <p class="value">SUPPLIER_000123</p>
+            <label>仕入れ先名</label>
+            <p class="value" th:text="${supplier.supplierName}"></p>
 
-        <label>仕入れ先名</label>
-        <p class="value">山田商事株式会社</p>
+            <label>仕入れ先住所</label>
+            <p class="value" th:text="${supplier.supplierAddress}"></p>
 
-        <label>仕入れ先住所</label>
-        <p class="value">東京都千代田区丸の内1-1-1</p>
+            <label>電話番号</label>
+            <p class="value" th:text="${supplier.phoneNumber}"></p>
 
-        <label>電話番号</label>
-        <p class="value">03-1234-5678</p>
+            <label>担当者名</label>
+            <p class="value" th:text="${supplier.contactPersonName}"></p>
 
-        <label>メールアドレス</label>
-        <p class="value">info@yamada-shoji.co.jp</p>
+            <label>メールアドレス</label>
+            <p class="value" th:text="${supplier.mailAddress}"></p>
 
-        <label>担当者名</label>
-        <p class="value">山田 太郎</p>
+            <p class="question" style="color: #E85A9A; font-weight: bold; margin-top: 25px;">この仕入先情報を完全に削除します。よろしいですか？</p>
 
-        <p class="confirm-text">この仕入先情報を削除します。よろしいですか？</p>
-
-        <div class="button-area">
-            <button class="delete-btn" onclick="location.href='42-siiresakisakuzyokakunin.html'">削除実行</button>
-            <button class="cancel-btn" onclick="location.href='39-siiresakisakuzyo.html'">キャンセル</button>
+            <div class="button-area">
+                <button type="submit" class="register-btn" style="background: #E85A9A; color: white;">削除実行</button>
+                <button type="button" class="back-btn" onclick="history.back()">戻る</button>
+            </div>
         </div>
-
-    </div>
-
+    </form>
 </div>
 
 </body>
