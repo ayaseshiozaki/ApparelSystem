@@ -1,36 +1,83 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>売上管理</title>
-  <link rel="stylesheet" href="../../static/css/03-17-uriage/03-uriagekannri.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet"
+        th:href="@{/css/03-17-uriage/03-uriagekannri.css}">
 </head>
+
 <body>
+
 <div class="grid-container">
-  <div class="grid-card" onclick="location.href='04-uriage_touroku.html'">
+
+  <!-- 売上情報登録 -->
+  <div class="grid-card"
+       onclick="location.href='/sales/new'">
+
     <div class="white-box">
-      <img src="../../static/images/image.jpg" alt="売上情報登録">
+
+      <img th:src="@{/images/image.jpg}"
+           alt="売上情報登録">
+
       <p>売上情報登録</p>
+
     </div>
+
   </div>
-  <div class="grid-card" onclick="location.href='07-uriagesakuzyo.html'">
+
+
+  <!-- 売上情報削除 -->
+  <div class="grid-card"
+       onclick="location.href='/sales/delete-form'">
+
     <div class="white-box">
-      <img src="../../static/images/image.jpg" alt="売上情報削除">
+
+      <img th:src="@{/images/image.jpg}"
+           alt="売上情報削除">
+
       <p>売上情報削除</p>
+
     </div>
+
   </div>
-  <div class="grid-card" onclick="location.href='09-uriage_kensaku.html'">
+
+
+  <!-- 売上情報修正 -->
+  <div class="grid-card"
+       onclick="location.href='/sales/search-form'">
+
     <div class="white-box">
-      <img src="../../static/images/image.jpg" alt="売上情報修正">
+
+      <img th:src="@{/images/image.jpg}"
+           alt="売上情報修正">
+
       <p>売上情報修正</p>
+
     </div>
+
   </div>
-  <div class="grid-card" onclick="location.href='17-uriagesyuukei.html'">
+
+
+  <!-- 売上情報集計 -->
+  <div class="grid-card"
+       onclick="location.href='/sales/summary'">
+
     <div class="white-box">
-      <img src="../../static/images/image.jpg" alt="売上情報集計">
+
+      <img th:src="@{/images/image.jpg}"
+           alt="売上情報集計">
+
       <p>売上情報集計</p>
+
     </div>
+
   </div>
+
 </div>
+
 </body>
 </html>
