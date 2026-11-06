@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>仕入先情報削除実行</title>
-    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/32-siiresaki_touroku_kakunin.css(v=2)}">
+    <!-- 41番のCSSをキャッシュバスター付きで読み込む -->
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/41-siiresaki_sakuzyo_zikkou.css(v=2)}">
 </head>
 <body>
 
@@ -14,7 +15,8 @@
         <!-- 削除対象の主キーをhiddenで送信 -->
         <input type="hidden" name="supplierID" th:value="${supplier.supplierID}">
 
-        <div class="confirm-area">
+        <!-- CSSの .delete-area に合わせる -->
+        <div class="delete-area">
             <label>仕入れID</label>
             <p class="value" th:text="${supplier.supplierID}"></p>
 
@@ -33,11 +35,13 @@
             <label>メールアドレス</label>
             <p class="value" th:text="${supplier.mailAddress}"></p>
 
-            <p class="question" style="color: #E85A9A; font-weight: bold; margin-top: 25px;">この仕入先情報を完全に削除します。よろしいですか？</p>
+            <!-- CSSの .confirm-text に合わせる -->
+            <p class="confirm-text">この仕入先情報を削除します。よろしいですか？</p>
 
             <div class="button-area">
-                <button type="submit" class="register-btn" style="background: #E85A9A; color: white;">削除実行</button>
-                <button type="button" class="back-btn" onclick="history.back()">戻る</button>
+                <!-- CSSの .delete-btn と .cancel-btn に合わせる -->
+                <button type="submit" class="delete-btn">削除実行</button>
+                <button type="button" class="cancel-btn" onclick="history.back()">戻る</button>
             </div>
         </div>
     </form>

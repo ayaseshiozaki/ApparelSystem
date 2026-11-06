@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>削除完了</title>
-    <link rel="stylesheet" href="../../static/css/30-43-siiresaki/43-siiresaki_sakuzyo_kanryou.css">
+    <!-- static配下の43番CSSをキャッシュバスター付きで読み込む -->
+    <link rel="stylesheet" th:href="@{/css/30-43-siiresaki/43-siiresaki_sakuzyo_kanryou.css(v=2)}">
 </head>
 <body>
 
@@ -11,10 +12,15 @@
 
     <h1>削除完了</h1>
 
-    <p class="message">仕入れ先情報を削除しました</p>
+    <!-- 削除された仕入れIDを表示 -->
+    <p class="message">
+        仕入れ先情報を削除しました<br>
+        <span style="font-size: 18px; color: var(--text, #7A4C63);">（仕入れID：<span th:text="${deletedID}"></span>）</span>
+    </p>
 
     <div class="button-area">
-        <button class="back-btn" onclick="location.href='30-siiresakikannri.html'">メニューへ戻る</button>
+        <!-- 管理メニュー画面へ戻る -->
+        <button type="button" class="back-btn" th:onclick="|location.href='@{/supplier/menu}'|">メニューへ戻る</button>
     </div>
 
 </div>

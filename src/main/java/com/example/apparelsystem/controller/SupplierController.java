@@ -138,7 +138,7 @@ public class SupplierController {
         supplierRepository.deleteById(supplierID);
         // 完了画面に削除したIDを表示するために渡す
         model.addAttribute("deletedID", supplierID);
-        return "30-43-siiresaki/42-siiresaki_sakuzyo_kakunin";
+        return "30-43-siiresaki/43-siiresaki_sakuzyo_kanryou";
     }
 
 }
