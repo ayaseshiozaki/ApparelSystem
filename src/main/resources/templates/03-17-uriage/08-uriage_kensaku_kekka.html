@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>検索結果一覧</title>
-    <link rel="stylesheet" href="../../static/css/03-17-uriage/08-uriagekensakukekka.css">
+    <link rel="stylesheet" href="../../static/css/03-17-uriage/08-uriage_kensaku_kekka.css" th:href="@{/css/03-17-uriage/08-uriage_kensaku_kekka.css}">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 
     <div class="button-area">
         <button class="btn-edit" onclick="location.href='10-uriage_syuusei.html'">修正</button>
-        <button class="btn-delete" onclick="location.href='14-uriagesakuzyozikkou.html'">削除</button>
+        <button class="btn-delete" onclick="location.href='14-uriage_sakuzyo_zikkou.html'">削除</button>
         <button class="btn-back" onclick="location.href='03-uriagekannri.html'">戻る</button>
     </div>
 
