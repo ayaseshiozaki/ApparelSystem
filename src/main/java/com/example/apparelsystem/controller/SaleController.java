@@ -257,7 +257,7 @@ public class SaleController {
     @GetMapping("/delete-form")
     public String showDeleteForm() {
 
-    return "03-17-uriage/07-uriagesakuzyo";
+    return "03-17-uriage/07-uriage_sakuzyo";
     }
 
     /**

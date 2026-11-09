@@ -30,7 +30,7 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-top:40px;
+    margin-top:80px;
 }
 
 /* --------------------
@@ -39,7 +39,7 @@ body{
 h1{
     color:var(--accent-color);
     font-size:34px;
-    margin-bottom:60px;
+    margin-bottom:50px;
 }
 
 /* --------------------
@@ -47,19 +47,20 @@ h1{
 -------------------- */
 .result-box{
     width:600px;
-    height:300px;
+    height:250px;
     background:#fff;
     border:2px solid var(--border-color);
     border-radius:12px;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
-    padding:20px;
     margin-bottom:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .result-box p{
-    margin-top:110px;
     color:var(--text-color);
-    font-size:18px;
+    font-size:20px;
 }
 
 /* --------------------
@@ -67,11 +68,11 @@ h1{
 -------------------- */
 .button-area{
     display:flex;
-    gap:35px;
+    gap:40px;
 }
 
 .button-area button{
-    width:150px;
+    width:180px;
     height:55px;
     border:none;
     border-radius:10px;
@@ -98,5 +99,6 @@ h1{
 
 .button-area button:hover{
     transform:translateY(-3px);
-    box-shadow:0 5px 12px rgba(232,90,154,.25);
+    background:var(--accent-color);
+    color:white;
 }
