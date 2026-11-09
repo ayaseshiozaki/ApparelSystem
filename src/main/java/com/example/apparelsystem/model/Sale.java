@@ -81,11 +81,22 @@ public class Sale {
     )
     private String paymentMethod;
 
+    // 削除フラグ
+    // 0 = 通常
+    // 1 = 削除済み
+    @Column(
+            name = "DeleteFlag",
+            nullable = false
+    )
+    private Integer deleteFlag = 0;
+
+
     /*
      * JPAで必要な引数なしコンストラクタ
      */
     public Sale() {
     }
+
 
     /*
      * CSVからSaleを作成するときに使用するコンストラクタ
@@ -110,7 +121,11 @@ public class Sale {
         this.buyersGender = buyersGender;
         this.contactPerson = contactPerson;
         this.paymentMethod = paymentMethod;
+
+        // 新規登録時は「削除されていない」状態
+        this.deleteFlag = 0;
     }
+
 
     public String getSaleID() {
         return saleID;
@@ -120,6 +135,7 @@ public class Sale {
         this.saleID = saleID;
     }
 
+
     public String getLineID() {
         return lineID;
     }
@@ -128,6 +144,7 @@ public class Sale {
         this.lineID = lineID;
     }
 
+
     public String getAcceptanceID() {
         return acceptanceID;
     }
@@ -135,6 +152,7 @@ public class Sale {
     public void setAcceptanceID(String acceptanceID) {
         this.acceptanceID = acceptanceID;
     }
+
 
     public LocalDateTime getSaleDateAndTime() {
         return saleDateAndTime;
@@ -146,6 +164,7 @@ public class Sale {
         this.saleDateAndTime = saleDateAndTime;
     }
 
+
     public Integer getQuantity() {
         return quantity;
     }
@@ -153,6 +172,7 @@ public class Sale {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
 
     public String getBuyersAgeGroup() {
         return buyersAgeGroup;
@@ -164,6 +184,7 @@ public class Sale {
         this.buyersAgeGroup = buyersAgeGroup;
     }
 
+
     public String getBuyersGender() {
         return buyersGender;
     }
@@ -173,6 +194,7 @@ public class Sale {
     ) {
         this.buyersGender = buyersGender;
     }
+
 
     public Integer getContactPerson() {
         return contactPerson;
@@ -184,6 +206,7 @@ public class Sale {
         this.contactPerson = contactPerson;
     }
 
+
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -192,5 +215,16 @@ public class Sale {
             String paymentMethod
     ) {
         this.paymentMethod = paymentMethod;
+    }
+
+
+    public Integer getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(
+            Integer deleteFlag
+    ) {
+        this.deleteFlag = deleteFlag;
     }
 }

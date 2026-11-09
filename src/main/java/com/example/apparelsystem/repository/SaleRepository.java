@@ -71,4 +71,13 @@ public interface SaleRepository extends JpaRepository<Sale, String> {
             @Param("start") LocalDateTime start,
             @Param("end") LocalDateTime end
     );
+
+    // 削除されていない売上を全件取得
+    List<Sale> findByDeleteFlag(Integer deleteFlag);
+
+    // 売上ID + 削除フラグで検索
+    List<Sale> findBySaleIDContainingAndDeleteFlag(
+            String saleID,
+            Integer deleteFlag
+    );
 }

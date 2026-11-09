@@ -249,4 +249,12 @@ public class SaleController {
 
         return "03-17-uriage/13-uriage_syuusei_kennsaku_kekka";
     }
+
+    /**
+     * 売上情報削除の検索画面を表示
+     */
+    @GetMapping("/delete-form")
+    public String showDeleteForm() {
+        return "03-17-uriage/07-uriage_sakuzyo";
+    }
 }
