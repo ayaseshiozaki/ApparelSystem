@@ -250,3 +250,38 @@ public class SaleController {
         return "03-17-uriage/13-uriage_syuusei_kennsaku_kekka";
     }
 }
+
+    /**
+    * 売上削除画面表示
+    */
+    @GetMapping("/delete-form")
+    public String showDeleteForm() {
+
+    return "03-17-uriage/07-uriagesakuzyo";
+    }
+
+    /**
+    * 売上削除実行
+     */
+    @PostMapping("/delete")
+    public String deleteSale(
+            @RequestParam String saleID,
+            RedirectAttributes redirectAttributes) {
+
+        if (!saleRepository.existsById(saleID)) {
+
+            redirectAttributes.addFlashAttribute(
+                "errorMessage",
+                "該当する売上IDが存在しません。");
+
+        return "redirect:/sales/delete-form";
+    }
+
+        saleRepository.deleteById(saleID);
+
+        redirectAttributes.addFlashAttribute(
+            "message",
+            "売上情報を削除しました。");
+
+        return "redirect:/sales/delete-form";
+    }
