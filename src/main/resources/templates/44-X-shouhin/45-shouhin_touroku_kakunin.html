@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品登録完了</title>
+    <link rel="stylesheet" th:href="@{/css/44-X-shouhin/45-shouhin_touroku_kakunin.css(v=2)}">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>商品登録完了</h1>
+    <p class="message">新しい商品情報を登録しました</p>
+    <div class="button-area" style="gap:20px;">
+        <button type="button" class="back-btn" th:onclick="|location.href='@{/products}'|">商品一覧を見る</button>
+        <button type="button" class="back-btn" th:onclick="|location.href='@{/product/register}'|">続けて登録する</button>
+    </div>
+</div>
+
+</body>
+</html>
