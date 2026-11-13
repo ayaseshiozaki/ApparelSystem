@@ -80,4 +80,38 @@ public interface SaleRepository extends JpaRepository<Sale, String> {
             String saleID,
             Integer deleteFlag
     );
+    /*
+     * 削除用：複数条件で売上情報を検索
+     * 削除されていないデータだけを取得する
+     */
+    @Query("""
+        SELECT s
+        FROM Sale s
+        WHERE s.deleteFlag = 0
+          AND (:saleID IS NULL OR :saleID = ''
+               OR s.saleID LIKE CONCAT('%', :saleID, '%'))
+          AND (:lineID IS NULL OR :lineID = ''
+               OR s.lineID LIKE CONCAT('%', :lineID, '%'))
+          AND (:startDate IS NULL
+               OR s.saleDateAndTime >= :startDate)
+          AND (:endDate IS NULL
+               OR s.saleDateAndTime < :endDate)
+          AND (:quantity IS NULL OR s.quantity = :quantity)
+          AND (:ageGroup IS NULL OR :ageGroup = ''
+               OR s.buyersAgeGroup = :ageGroup)
+          AND (:gender IS NULL OR :gender = ''
+               OR s.buyersGender = :gender)
+          AND (:paymentMethod IS NULL OR :paymentMethod = ''
+               OR s.paymentMethod = :paymentMethod)
+        """)
+    List<Sale> searchSalesForDelete(
+            @Param("saleID") String saleID,
+            @Param("lineID") String lineID,
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate,
+            @Param("quantity") Integer quantity,
+            @Param("ageGroup") String ageGroup,
+            @Param("gender") String gender,
+            @Param("paymentMethod") String paymentMethod
+    );
 }

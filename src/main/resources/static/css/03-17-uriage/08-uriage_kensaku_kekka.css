@@ -1,104 +1,145 @@
+
 /* --------------------
    共通
 -------------------- */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root{
-    --main-color:#F6B8D2;
-    --sub-color:#FCE4EF;
-    --bg-color:#FFF7FB;
-    --accent-color:#E85A9A;
-    --border-color:#F2C8DA;
-    --text-color:#7A4C63;
+:root {
+    --main-color: #F6B8D2;
+    --sub-color: #FCE4EF;
+    --bg-color: #FFF7FB;
+    --accent-color: #E85A9A;
+    --border-color: #F2C8DA;
+    --text-color: #7A4C63;
 }
 
-body{
-    font-family:"Yu Gothic","Meiryo",sans-serif;
-    background:var(--bg-color);
-    color:var(--text-color);
+body {
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 /* --------------------
    全体
 -------------------- */
-.container{
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    margin-top:80px;
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    padding: 0 20px;
 }
 
 /* --------------------
    タイトル
 -------------------- */
-h1{
-    color:var(--accent-color);
-    font-size:34px;
-    margin-bottom:50px;
+h1 {
+    color: var(--accent-color);
+    font-size: 34px;
+    margin-bottom: 50px;
+    text-align: center;
 }
 
 /* --------------------
    検索結果枠
 -------------------- */
-.result-box{
-    width:600px;
-    height:250px;
-    background:#fff;
-    border:2px solid var(--border-color);
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-    margin-bottom:70px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.result-box {
+    display: block;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 250px;
+    height: auto;
+
+    background: #fff;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+
+    margin-bottom: 50px;
+    padding: 25px;
+
+    overflow-x: auto;
 }
 
-.result-box p{
-    color:var(--text-color);
-    font-size:20px;
+/* 検索結果の見出し */
+.result-box p {
+    color: var(--text-color);
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 /* --------------------
-   ボタン
+   検索結果テーブル
 -------------------- */
-.button-area{
-    display:flex;
-    gap:40px;
+.result-box table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
-.button-area button{
-    width:180px;
-    height:55px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
+.result-box th,
+.result-box td {
+    border: 1px solid var(--border-color);
+    padding: 12px 8px;
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 
-.btn-edit{
-    background:var(--main-color);
-    color:var(--text-color);
+.result-box th {
+    background: var(--sub-color);
+    color: var(--text-color);
 }
 
-.btn-delete{
-    background:#f08fb6;
-    color:white;
+.result-box td {
+    background: #fff;
 }
 
-.btn-back{
-    background:#f9dbe7;
-    color:var(--text-color);
+/* --------------------
+   削除ボタン
+-------------------- */
+.result-box .btn-delete {
+    background: #f08fb6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    cursor: pointer;
 }
 
-.button-area button:hover{
-    transform:translateY(-3px);
-    background:var(--accent-color);
-    color:white;
+/* --------------------
+   戻るボタン
+-------------------- */
+.button-area {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.button-area button {
+    width: 180px;
+    height: 55px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-back {
+    background: #f9dbe7;
+    color: var(--text-color);
+}
+
+.button-area button:hover {
+    transform: translateY(-3px);
+    background: var(--accent-color);
+    color: white;
 }
