@@ -3,6 +3,9 @@ package com.example.apparelsystem.controller;
 import com.example.apparelsystem.model.Sale;
 import com.example.apparelsystem.repository.SaleRepository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -256,5 +259,71 @@ public class SaleController {
     @GetMapping("/delete-form")
     public String showDeleteForm() {
         return "03-17-uriage/07-uriage_sakuzyo";
+    }
+    /*
+     * 削除対象の売上情報を検索
+     */
+    @GetMapping("/delete-search")
+    public String searchSalesForDelete(
+
+            @RequestParam(required = false) String saleID,
+            @RequestParam(required = false) String lineID,
+            @RequestParam(required = false) String saleDate,
+            @RequestParam(required = false) Integer quantity,
+            @RequestParam(required = false) String ageGroup,
+            @RequestParam(required = false) String gender,
+            @RequestParam(required = false) String paymentMethod,
+
+            Model model) {
+
+        // 販売日の検索範囲
+        LocalDateTime startDate = null;
+        LocalDateTime endDate = null;
+
+        // 販売日が入力されている場合
+        if (saleDate != null && !saleDate.isBlank()) {
+
+            LocalDate date = LocalDate.parse(saleDate);
+
+            startDate = date.atStartOfDay();
+            endDate = date.plusDays(1).atStartOfDay();
+        }
+
+        // 空文字をnullにする
+        if (saleID != null && saleID.isBlank()) {
+            saleID = null;
+        }
+
+        if (lineID != null && lineID.isBlank()) {
+            lineID = null;
+        }
+
+        if (ageGroup != null && ageGroup.isBlank()) {
+            ageGroup = null;
+        }
+
+        if (gender != null && gender.isBlank()) {
+            gender = null;
+        }
+
+        if (paymentMethod != null && paymentMethod.isBlank()) {
+            paymentMethod = null;
+        }
+
+        // 削除対象を検索
+        List<Sale> sales = saleRepository.searchSalesForDelete(
+                saleID,
+                lineID,
+                startDate,
+                endDate,
+                quantity,
+                ageGroup,
+                gender,
+                paymentMethod
+        );
+
+        model.addAttribute("sales", sales);
+
+        return "03-17-uriage/08-uriage_kensaku_kekka";
     }
 }
